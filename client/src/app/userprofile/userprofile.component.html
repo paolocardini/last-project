@@ -3,9 +3,18 @@
 </div>
 
 <div *ngIf="user">
-  <h2> You are now logged in as {{ user.username }}!! </h2>
-  <p> Here's the user object </p>
-  <pre> {{ user | json }} </pre>
+  <h4> You are now logged in as {{ user.username }}!! </h4>
+  <div >
+    <ul>
+      <li>{{user.name}}</li>
+      <li>{{user.firstname}}</li>
+      <li>{{user.age}}</li>
+      <li>{{user.address}}</li>
+      <li>{{user.city}}</li>
+      <li>{{user.age}}</li>
+    </ul>
+
+  </div>
 
   <button (click)="auth.logout().subscribe()"> logout </button>
 </div>

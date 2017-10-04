@@ -9,7 +9,7 @@ var authRoutes = express.Router();
 
 /* GET home page. */
 authRoutes.post('/signup', (req, res, next) => {
-  const {username, password} = req.body;
+  const {username, password,age,address,city,email,name,firstname} = req.body;
 
   if (!username || !password)
     return res.status(400).json({ message: 'Provide username and password' });
@@ -25,7 +25,13 @@ authRoutes.post('/signup', (req, res, next) => {
     debug('creating user');
     const theUser = new User({
       username,
-      password: hashPass
+      password: hashPass,
+      age,
+      city,
+      address,
+      name,
+      firstname,
+      email
     });
     return theUser.save()
     .then(user =>{

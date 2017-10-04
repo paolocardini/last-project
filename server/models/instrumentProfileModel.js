@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
-var musisProfileSchema = new Schema({
+var instrumentProfileSchema = new Schema({
 	'style' : String,
 	'experience' : Number,
 	'description' : String,
@@ -14,4 +14,4 @@ var musisProfileSchema = new Schema({
 	 }
 });
 
-module.exports = mongoose.model('musicProfile', musicProfileSchema);
+module.exports = mongoose.model('instrumentProfile', instrumentProfileSchema);
