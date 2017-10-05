@@ -3,7 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {Http} from '@angular/http';
 import 'rxjs';
 import {environment} from '../../environments/environment';
-
+import {Router} from '@angular/router';
 const BASEURL = environment.BASEURL + "/auth";
 
 @Injectable()
@@ -13,7 +13,7 @@ export class AuthService {
   private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
   private options = {withCredentials:true};
 
-  constructor(private http: Http) {
+  constructor(private http: Http,public router:Router) {
     this.isLoggedIn().subscribe();
   }
 
@@ -36,9 +36,9 @@ export class AuthService {
       return Observable.throw(e.json().message);
     }
 
-    signup(username, password,name,firstname,email,address,age,city) {
+    signup(username, password,lastname,firstname,email,address,age,city) {
       console.log("entrooo")
-      return this.http.post(`${BASEURL}/signup`, {username, password,name,firstname,email,address,age,city}, this.options)
+      return this.http.post(`${BASEURL}/signup`, {username, password,lastname,firstname,email,address,age,city}, this.options)
         .map(res => res.json())
         .map(user => this.emitUserLoginEvent(user))
         .catch(this.handleError);
@@ -64,4 +64,5 @@ export class AuthService {
         .map(user => this.emitUserLoginEvent(user))
         .catch(this.handleError);
     }
+
 }

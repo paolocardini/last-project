@@ -1,16 +1,16 @@
 <form >
   <h2> Signup </h2>
-  <label>name</label>
-  <input type="text" [(ngModel)]="formInfo.name" name="name"/>
-  <br>
   <label>firstname</label>
   <input type="text" [(ngModel)]="formInfo.firstname" name="firstname"/>
+  <br>
+  <label>lastname</label>
+  <input type="text" [(ngModel)]="formInfo.lastname" name="lastname"/>
   <br>
   <label>age</label>
   <input type="text" [(ngModel)]="formInfo.age" name="age"/>
   <br>
   <label>address</label>
-  <input type="text" [(ngModel)]="formInfo.address" name="address"/>
+  <input type="text" [(ngModel)]="formInfo.address" name="address" autocomplete="address-level2"/>
   <br>
   <label>city</label>
   <input type="text" [(ngModel)]="formInfo.city" name="city"/>
@@ -27,6 +27,6 @@
 
 
   <button (click)="signup()" class="btn waves-effect waves-light" type="submit" name="action">Submit
-      <i class="material-icons right">sign</i>
+      <i class="material-icons right"></i>
     </button>
 </form>

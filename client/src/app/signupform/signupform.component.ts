@@ -11,7 +11,7 @@ export class SignupformComponent implements OnInit {
 formInfo = {
   username:"",
   password:"",
-  name:"",
+  lastname:"",
   firstname:"",
   age:"",
   email:"",
@@ -26,12 +26,12 @@ formInfo = {
   }
 
   signup(){
-    const {username, password,name,firstname,email,address,age,city} = this.formInfo;
-    if(username != "" && password != "" && name != "" && firstname != "" && age != "" && address != "" && city != "" && email != ""){
-      console.log(`Signup with ${username} ${password} ${name} ${firstname} ${age} ${address} ${city} ${email}`)
-      this.auth.signup(username, password,name,firstname,email,address,age,city)
+    const {username, password,lastname,firstname,email,address,age,city} = this.formInfo;
+    if(username != "" && password != "" && lastname != "" && firstname != "" && age != "" && address != "" && city != "" && email != ""){
+      console.log(`Signup with ${username} ${password} ${lastname} ${firstname} ${age} ${address} ${city} ${email}`)
+      this.auth.signup(username, password,lastname,firstname,email,address,age,city)
       .map(user => console.log(user))
-      .subscribe((user) => this.router.navigate(['/user']));
+      .subscribe((user) => this.router.navigate(['/home']));
     } else{
       console.log("You must set a username and a password");
     }

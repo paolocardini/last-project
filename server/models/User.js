@@ -4,12 +4,13 @@ const Schema   = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
   password: String,
-  name : String,
-  firstname: String,
+  firstname : String,
+  lastname: String,
   address: String,
   city: String,
   email: String,
-  age: Number
+  age: Number,
+  profile:[{type:Schema.Types.ObjectId, ref:'instrumentProfile'}]
 
 }, {
   timestamps: {
