@@ -1,5 +1,5 @@
-var iProfile = require('../models/instrumentProfileModel.js');
-
+const instrumentProfile = require('../models/instrumentProfileModel.js');
+const User = require('../models/User.js')
 /**
  * music-cardController.js
  *
@@ -33,7 +33,7 @@ module.exports = {
     //                 message: 'Error when getting music-card.',
     //                 error: err
     //             });
-    //         }
+    //        }
     //         if (!music-card) {
     //             return res.status(404).json({
     //                 message: 'No such music-card'
@@ -47,26 +47,26 @@ module.exports = {
     //  * music-cardController.create()
     //  */
     create: function (req, res) {
-        var profile = new iProfile({
+      console.log("dentro del controller: " + req.user._id)
+        var profile_id = 0;
+        var profile = new instrumentProfile({
 			style : req.body.style,
 			experience : req.body.experience,
 			description : req.body.description,
       instrument: req.body.instrument
 
         });
-
-        profile.save(function (err, profile) {
-            if (err) {
-                return res.status(500).json({
-                    message: 'Error when creating music-card',
-                    error: err
-                });
+        profile.save().then( profile  => {
+          User.findByIdAndUpdate(req.user._id, {
+            $push: {
+              profile: profile._id
             }
-            return res.status(201).json(profile);
-        });
-    },
-
-    /**
+          })
+          .then(profile => res.status(200).json(profile))
+        .catch( err => console.log(err));
+      })
+        }
+    /**}
      * music-cardController.update()
      */
 //     update: function (req, res) {

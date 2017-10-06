@@ -20,8 +20,9 @@ export class InstrumentService {
 }
 
 
-    createProfile(experience,descriptions,instrument,style) {
-      return this.http.post(`${this.BASEURL}/instrument-profile/new`, {experience,descriptions,instrument,style}, this.options)
+    createInstrumentProfile(experience,description,style,instrument) {
+      console.log("FORM STYLE: " + style)
+      return this.http.post(`${this.BASEURL}/instrument-profile/new`, {experience,description,instrument,style}, this.options)
         .map(res => res.json())
         .catch(this.handleError);
     }

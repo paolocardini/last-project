@@ -1,10 +1,19 @@
 const User = require("../models/User")
 const bcrypt = require("bcrypt")
 
+listInstrumentProfile: (req,res) =>{
+  User.find().populate.('instrumentModel')
+  .then(users => res.status(200).json(users))
+  .catch( e => res.status(500).json({error:e.message}));
+
+},
+
 
 
 editUserGet: (req, res) => {
 },
+
+
 
 editUserPost: (req, res, next) => {
   const userId = req.user._id

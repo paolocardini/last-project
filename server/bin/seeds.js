@@ -17,7 +17,7 @@ const Users = [
     // profile:[{type:Schema.Types.ObjectId, ref:'instrumentProfile'}]
 
   }
-
+]
 
 User.create(Users, (err) => {
   if (err) { throw(err); }

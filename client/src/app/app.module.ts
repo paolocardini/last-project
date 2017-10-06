@@ -11,9 +11,10 @@ import { RouterModule } from '@angular/router';
 import { IsLoggedInService } from './services/isLoggedIn.canactivate.service';
 import {routes} from './routes';
 import { SignupformComponent } from './signupform/signupform.component';
-import { MapsComponent } from './maps/maps.component';
 import { AgmCoreModule } from '@agm/core';
-import { CreateProfileComponent } from './create-profile/create-profile.component';
+import { CreateInstrumentProfileComponent } from './create-profile/create-profile.component';
+import {InstrumentService} from './services/instrument.service';
+import { ProfileListComponent } from './profile-list/profile-list.component'
 
 
 @NgModule({
@@ -23,8 +24,8 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
     HomeComponent,
     UserprofileComponent,
     SignupformComponent,
-    MapsComponent,
-    CreateProfileComponent
+    CreateInstrumentProfileComponent,
+    ProfileListComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,7 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
       apiKey: 'AIzaSyDPLpdo62Gii7eEBdUk8qXmA2x6YVN0bNI'
     })
   ],
-  providers: [AuthService, IsLoggedInService],
+  providers: [AuthService, IsLoggedInService,InstrumentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,7 @@
+
+
+
+
 <div *ngIf="!user">
   <h2>NO USER LOGGED IN</h2>
 </div>
@@ -11,12 +15,26 @@
       <li>{{user.age}}</li>
       <li>{{user.address}}</li>
       <li>{{user.city}}</li>
-      <li>{{user.age}}</li>
+      <li>{{user.email}}</li>
+      <li>{{user.profile}}</li>
     </ul>
 
   </div>
 
-  <button (click)="auth.logout().subscribe()"> logout </button>
-  <button (click)="auth.logout()"></button>
+  <!-- <div class="listInstrument" *ngFor= "let user of users">
+    <p>USER-NAME: {{user.firstname }}</p>
+    <p>USER-LASTNAME: {{user.lasttname }}</p>
+    <p>AGE: {{user.center.age }}</p>
+    <p>ADDRESS: {{user.address }}</p>
+    <p>CITY: {{user.city }}</p>
+    <p>EMAIL: {{user.email }}</p>
+    <p>PROFILE: {{user.profile }}</p>
+
+  </div> -->
+
+
+
+  <button (click)="auth.logout().subscribe()"> LOGOUT </button>
+  <a [routerLink]="['/create']">ADD-INSTRUMENT-PROFILE</a>
 
 </div>

@@ -10,7 +10,7 @@ const userSchema = new Schema({
   city: String,
   email: String,
   age: Number,
-  profile:[{type:Schema.Types.ObjectId, ref:'instrumentProfile'}]
+  profile:[{type:Schema.Types.ObjectId, ref:'instrumentModel'}]
 
 }, {
   timestamps: {
