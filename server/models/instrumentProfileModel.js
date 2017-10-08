@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var Schema   = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema   = mongoose.Schema;
 
-var instrumentProfileSchema = new Schema({
+const instrumentProfileSchema = new Schema({
 	'experience' : String,
 	'description' : String,
 	'style': {
@@ -14,5 +14,4 @@ var instrumentProfileSchema = new Schema({
       }
 });
 
-const instrumentModel = mongoose.model('instrumentProfile', instrumentProfileSchema);
-module.exports = instrumentModel;
+module.exports = mongoose.model('instrumentProfile', instrumentProfileSchema);

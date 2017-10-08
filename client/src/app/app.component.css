@@ -8,3 +8,7 @@ agm-map {
   width: 400px;
   float: right;
 }
+ body{
+   padding: 0;
+   margin: 0;
+ }

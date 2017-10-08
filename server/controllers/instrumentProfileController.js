@@ -1,10 +1,6 @@
 const instrumentProfile = require('../models/instrumentProfileModel.js');
 const User = require('../models/User.js')
-/**
- * music-cardController.js
- *
- * @description :: Server-side logic for managing music-cards.
- */
+
 module.exports = {
 
     /**
@@ -47,7 +43,6 @@ module.exports = {
     //  * music-cardController.create()
     //  */
     create: function (req, res) {
-      console.log("dentro del controller: " + req.user._id)
         var profile_id = 0;
         var profile = new instrumentProfile({
 			style : req.body.style,

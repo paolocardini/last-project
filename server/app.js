@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const debug = require('debug')("angularauth:"+path.basename(__filename).split('.')[0]);
 const authRoutes = require('./routes/auth');
 const iProfileRoutes = require('./routes/instrumentProfileRoutes');
+const userRoutes = require ('./routes/userRoutes');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
@@ -54,7 +55,7 @@ require('./passport/local');
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+app.use('/user',userRoutes);
 app.use('/auth', authRoutes);
 app.use('/', iProfileRoutes);
 

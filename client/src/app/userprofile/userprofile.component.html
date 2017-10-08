@@ -31,10 +31,12 @@
     <p>PROFILE: {{user.profile }}</p>
 
   </div> -->
+  <button [routerLink]="['/create']" class="btn waves-effect waves-light" type="submit" name="action">ADD-INSTRUMENT-PROFILE
+      <i class="material-icons right"></i>
+    </button>
 
 
 
-  <button (click)="auth.logout().subscribe()"> LOGOUT </button>
-  <a [routerLink]="['/create']">ADD-INSTRUMENT-PROFILE</a>
+
 
 </div>

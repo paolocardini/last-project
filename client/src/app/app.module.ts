@@ -26,6 +26,7 @@ import { ProfileListComponent } from './profile-list/profile-list.component'
     SignupformComponent,
     CreateInstrumentProfileComponent,
     ProfileListComponent
+  
   ],
   imports: [
     BrowserModule,

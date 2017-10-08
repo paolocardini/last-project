@@ -1,7 +1,8 @@
 const router = require('express').Router()
 const userController = require('../controllers/UserController')
 const {ensureLoggedIn} = require('connect-ensure-login')
+const instrumentProfileController = require('../controllers/instrumentProfileController.js')
 
-router.get('/edit', ensureLoggedIn('/'), userController.editUserGet)
-router.post('/edit', ensureLoggedIn('/'), userController.editUserPost)
-router.get('/', ensureLoggedIn('/'), userController.listInstrumentProfile)
+router.get('/instrument-profile', userController.showInstrumentProfileGet)
+
+module.exports = router

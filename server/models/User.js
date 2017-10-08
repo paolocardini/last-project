@@ -10,7 +10,7 @@ const userSchema = new Schema({
   city: String,
   email: String,
   age: Number,
-  profile:[{type:Schema.Types.ObjectId, ref:'instrumentModel'}]
+  profile:[{type:Schema.Types.ObjectId, ref:'instrumentProfile'}]
 
 }, {
   timestamps: {
@@ -19,5 +19,4 @@ const userSchema = new Schema({
   }
 });
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);

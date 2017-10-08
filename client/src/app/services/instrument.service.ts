@@ -27,4 +27,10 @@ export class InstrumentService {
         .catch(this.handleError);
     }
 
+    // showInstrumentProfile(){
+    //   return this.http.get(`${this.BASEURL}/user/instrument-profile`, {experience,description,instrument,style}, this.options)
+    //     .map(res => res.json())
+    //     .catch(this.handleError);
+    // }
+
 }

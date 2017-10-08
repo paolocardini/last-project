@@ -1,4 +1,4 @@
-var dashBoardModel = require('../models/dashBoardModel.js');
+const dashBoardModel = require('../models/dashBoardModel.js');
 
 /**
  * dashBoardController.js
@@ -86,7 +86,7 @@ module.exports = {
             dashBoard.title = req.body.title ? req.body.title : dashBoard.title;
 			dashBoard.description = req.body.description ? req.body.description : dashBoard.description;
 			dashBoard.date = req.body.date ? req.body.date : dashBoard.date;
-			
+
             dashBoard.save(function (err, dashBoard) {
                 if (err) {
                     return res.status(500).json({
