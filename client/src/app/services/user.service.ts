@@ -4,8 +4,10 @@ import {Http} from '@angular/http';
 import 'rxjs';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
-const BASEURL = environment.BASEURL;
-// + "/auth"
+const BASEURL = environment.BASEURL + "/auth";
+
+
+
 @Injectable()
 export class UserService {
   private user:object;

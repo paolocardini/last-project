@@ -13,6 +13,7 @@ const iProfileRoutes = require('./routes/instrumentProfileRoutes');
 const userRoutes = require ('./routes/userRoutes');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require ('dotenv').load();
 
 const app = express();
 
@@ -44,7 +45,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-  secret: 'angular auth passport secret shh',
+  secret: process.env.PATH_SECRET,
   resave: true,
   saveUninitialized: true,
   cookie : { httpOnly: true, maxAge: 60*60*24*365 },
