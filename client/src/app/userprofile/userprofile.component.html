@@ -1,42 +1,36 @@
+<div class="background">
+
+    <div *ngIf="!user">
+      <h2>NO USER LOGGED IN</h2>
+    </div>
+    <div class="fotocontainer">
 
 
+    </div>
 
+    <div  class="container">
+      <h4>You are now logged in as {{ user.username }}!!</h4>
+      <div>
+        <ul>
+          <li>{{user.lastname}}</li>
+          <li>{{user.firstname}}</li>
+          <li>{{user.age}}</li>
+          <li>{{user.address}}</li>
+          <li>{{user.city}}</li>
+          <li>{{user.email}}</li>
+        </ul>
+      </div>
 
-<div *ngIf="!user">
-  <h2>NO USER LOGGED IN</h2>
-</div>
+      <button [routerLink]="['/create']" class="btn waves-effect waves-light" type="submit" name="action">ADD-INSTRUMENT-PROFILE
+        <i class="material-icons right"></i>
+      </button>
+      <button [routerLink]="['/show-instrument-profile']" class="btn waves-effect waves-light" type="submit" name="action">SHOW-INSTRUMENT-PROFILE
+        <i class="material-icons right"></i>
+      </button>
+    </div>
 
-<div *ngIf="user">
-  <h4> You are now logged in as {{ user.username }}!! </h4>
-  <div >
-    <ul>
-      <li>{{user.lastname}}</li>
-      <li>{{user.firstname}}</li>
-      <li>{{user.age}}</li>
-      <li>{{user.address}}</li>
-      <li>{{user.city}}</li>
-      <li>{{user.email}}</li>
-      <li>{{user.profile}}</li>
-    </ul>
-
-  </div>
-
-  <!-- <div class="listInstrument" *ngFor= "let user of users">
-    <p>USER-NAME: {{user.firstname }}</p>
-    <p>USER-LASTNAME: {{user.lasttname }}</p>
-    <p>AGE: {{user.center.age }}</p>
-    <p>ADDRESS: {{user.address }}</p>
-    <p>CITY: {{user.city }}</p>
-    <p>EMAIL: {{user.email }}</p>
-    <p>PROFILE: {{user.profile }}</p>
-
-  </div> -->
-  <button [routerLink]="['/create']" class="btn waves-effect waves-light" type="submit" name="action">ADD-INSTRUMENT-PROFILE
-      <i class="material-icons right"></i>
-    </button>
-
-
-
-
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
 
 </div>

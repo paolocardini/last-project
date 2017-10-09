@@ -1,3 +1,13 @@
-body{
-  background-color: black;
+.title{
+  background-color: green;
+  text-align: center;
+}
+
+
+
+{
+  background-color: rgba(204, 160, 15, 0.94);
+  height: 150px;
+  width: 2000px;
+
 }

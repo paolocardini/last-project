@@ -4,7 +4,7 @@ const instrumentProfile = require ("../models/instrumentProfileModel")
 
 module.exports = {
 
-showInstrumentProfileGet: (req,res) =>{
+showInstrumentalProfileGet: (req,res) =>{
   User.find().populate('profile')
   .then(users => {
     console.log("USER: " + users)

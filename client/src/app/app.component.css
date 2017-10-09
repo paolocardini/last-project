@@ -2,13 +2,13 @@ li {
   list-style: none;
 }
 
-
 agm-map {
   height: 300px;
   width: 400px;
   float: right;
 }
- body{
+ .nav-wrapper{
    padding: 0;
    margin: 0;
+   background-color: rgba(101, 47, 79, 0.85)
  }

@@ -3,6 +3,7 @@ const Schema   = mongoose.Schema;
 
 const instrumentProfileSchema = new Schema({
 	'experience' : String,
+	'image' : String,
 	'description' : String,
 	'style': {
 		type: String,
@@ -12,6 +13,7 @@ const instrumentProfileSchema = new Schema({
         type: String,
         enum: ['guitar','drum','bass']
       }
+
 });
 
 module.exports = mongoose.model('instrumentProfile', instrumentProfileSchema);

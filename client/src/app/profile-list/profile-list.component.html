@@ -1,2 +1,11 @@
-<p>this workss</p>
-<p *ngIf="user">{{user.profile[0]}}</p>
+<div *ngFor='let profile of userProfileList' class="profile-user">
+  <p>USER : {{ profile.username }}</p>
+
+
+  <div *ngFor="let instrument of profile.profile" class = "profile-music">
+    <p>I PLAY : {{instrument.instrument}}</p>
+    <p>STYLE OF MUSIC : {{instrument.style}}</p>
+    <p>MY EXPERIENCE : {{instrument.experience}}</p>
+    <p>I'M SEARCHING FOR : {{instrument.description}}</p>
+  </div>
+</div>

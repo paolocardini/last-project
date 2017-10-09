@@ -19,9 +19,7 @@ const app = express();
 
 require('./config/database');
 
-var whitelist = [
-    'http://localhost:4200',
-];
+var whitelist = ['http://localhost:4200'];
 var corsOptions = {
     origin: function(origin, callback){
         var originIsWhitelisted = whitelist.indexOf(origin) !== -1;

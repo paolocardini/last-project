@@ -1,35 +1,27 @@
 
-<div class="container">
-  <form id = "signupform">
-    <h2> Signup </h2>
-    <label>firstname</label>
-    <input type="text" [(ngModel)]="formInfo.firstname" name="firstname"/>
-    <br>
-    <label>lastname</label>
-    <input type="text" [(ngModel)]="formInfo.lastname" name="lastname"/>
-    <br>
-    <label>age</label>
-    <input type="text" [(ngModel)]="formInfo.age" name="age"/>
-    <br>
-    <label>address</label>
-    <input type="text" [(ngModel)]="formInfo.address" name="address" autocomplete="address-level2"/>
-    <br>
-    <label>city</label>
-    <input type="text" [(ngModel)]="formInfo.city" name="city"/>
-    <br>
-    <label>email</label>
-    <input type="text" [(ngModel)]="formInfo.email" name="email"/>
-    <br>
-    <label> Username </label>
-    <input type="text" [(ngModel)]="formInfo.username" name="username"/>
-    <br>
-    <label> Password </label>
-    <input type="password" [(ngModel)]="formInfo.password" name="password"/>
+
+
+    <form id="signupform">
+      <h2> Signup </h2>
+      <input placeholder="firstname" type="text" [(ngModel)]="formInfo.firstname" name="firstname" />
+      <br>
+      <input placeholder="lastname" type="text" [(ngModel)]="formInfo.lastname" name="lastname" />
+      <br>
+      <input placeholder="age" type="text" [(ngModel)]="formInfo.age" name="age" />
+      <br>
+      <input placeholder="address" type="text" [(ngModel)]="formInfo.address" name="address" autocomplete="address-level2" />
+      <br>
+      <input placeholder="city" type="text" [(ngModel)]="formInfo.city" name="city" />
+      <br>
+      <input placeholder="email" type="text" [(ngModel)]="formInfo.email" name="email" />
+      <br>
+      <input placeholder="username" type="text" [(ngModel)]="formInfo.username" name="username" />
+      <br>
+      <input placeholder="password" type="password" [(ngModel)]="formInfo.password" name="password" />
 
 
 
-    <button (click)="signup()" class="btn waves-effect waves-light" type="submit" name="action">Submit
-      <i class="material-icons right">send</i>
-    </button>
-  </form>
-</div>
+      <button (click)="signup()" class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
