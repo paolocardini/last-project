@@ -1,11 +1,19 @@
+<div>
+
+
 <div *ngFor='let profile of userProfileList' class="profile-user">
   <p>USER : {{ profile.username }}</p>
-
-
-  <div *ngFor="let instrument of profile.profile" class = "profile-music">
+  <div *ngFor="let instrument of profile.profile">
     <p>I PLAY : {{instrument.instrument}}</p>
     <p>STYLE OF MUSIC : {{instrument.style}}</p>
     <p>MY EXPERIENCE : {{instrument.experience}}</p>
     <p>I'M SEARCHING FOR : {{instrument.description}}</p>
   </div>
+  <button [routerLink]="['/user']" class="btn waves-effect waves-light" type="submit" name="action">DELETE
+    <i class="material-icons right">delete</i>
+  </button>
+
+
+
+
 </div>

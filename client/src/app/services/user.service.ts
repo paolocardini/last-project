@@ -21,4 +21,12 @@ export class UserService {
         return res.json()
       })
   }
+
+  public showUsersProfiles(){
+    return this.http.get(`${BASE_URL}/user/users-profiles`)
+      .map(res => {
+        return res.json()
+      })
+
+  }
 }

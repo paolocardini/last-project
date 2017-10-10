@@ -7,6 +7,8 @@ import { SignupformComponent } from './signupform/signupform.component';
 import { CreateInstrumentProfileComponent } from './create-profile/create-profile.component';
 import { ProfileListComponent } from './profile-list/profile-list.component';
 import { IsLoggedInService } from './services/isLoggedIn.canactivate.service';
+import { ShowUsersListComponent } from './show-users-list/show-users-list.component';
+
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,5 +17,7 @@ export const routes: Routes = [
   { path: 'signup', component: SignupformComponent, },
   { path: 'create', component: CreateInstrumentProfileComponent, },
   { path: 'show-instrument-profile', component: ProfileListComponent, },
+  { path: 'show-instrument-profile', component: ShowUsersListComponent, },
+
   { path: '**', redirectTo: '' }
 ];

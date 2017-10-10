@@ -23,6 +23,8 @@ import { InstrumentService } from './services/instrument.service';
 import { IsLoggedInService } from './services/isLoggedIn.canactivate.service';
 
 import { routes } from './routes';
+import { MessageMusiciansComponent } from './message-musicians/message-musicians.component';
+import { ShowUsersListComponent } from './show-users-list/show-users-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,9 @@ import { routes } from './routes';
     UserprofileComponent,
     SignupformComponent,
     CreateInstrumentProfileComponent,
-    ProfileListComponent
+    ProfileListComponent,
+    MessageMusiciansComponent,
+    ShowUsersListComponent
 
   ],
   imports: [

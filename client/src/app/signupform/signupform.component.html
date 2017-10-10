@@ -1,27 +1,112 @@
+<!-- <form id="signupform">
+  <h2> Signup </h2>
+  <input placeholder="firstname" type="text" [(ngModel)]="formInfo.firstname" name="firstname" />
+  <br>
+  <input placeholder="lastname" type="text" [(ngModel)]="formInfo.lastname" name="lastname" />
+  <br>
+  <input placeholder="age" type="text" [(ngModel)]="formInfo.age" name="age" />
+  <br>
+  <input placeholder="address" type="text" [(ngModel)]="formInfo.address" name="address" autocomplete="address-level2" />
+  <br>
+  <input placeholder="city" type="text" [(ngModel)]="formInfo.city" name="city" />
+  <br>
+  <input placeholder="email" type="text" [(ngModel)]="formInfo.email" name="email" />
+  <br>
+  <input placeholder="username" type="text" [(ngModel)]="formInfo.username" name="username" />
+  <br>
+  <input placeholder="password" type="password" [(ngModel)]="formInfo.password" name="password" />
 
 
 
-    <form id="signupform">
-      <h2> Signup </h2>
-      <input placeholder="firstname" type="text" [(ngModel)]="formInfo.firstname" name="firstname" />
-      <br>
-      <input placeholder="lastname" type="text" [(ngModel)]="formInfo.lastname" name="lastname" />
-      <br>
-      <input placeholder="age" type="text" [(ngModel)]="formInfo.age" name="age" />
-      <br>
-      <input placeholder="address" type="text" [(ngModel)]="formInfo.address" name="address" autocomplete="address-level2" />
-      <br>
-      <input placeholder="city" type="text" [(ngModel)]="formInfo.city" name="city" />
-      <br>
-      <input placeholder="email" type="text" [(ngModel)]="formInfo.email" name="email" />
-      <br>
-      <input placeholder="username" type="text" [(ngModel)]="formInfo.username" name="username" />
-      <br>
-      <input placeholder="password" type="password" [(ngModel)]="formInfo.password" name="password" />
+  <button (click)="signup()" class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button>
+</form> -->
 
 
 
-      <button (click)="signup()" class="btn waves-effect waves-light" type="submit" name="action">Submit
-        <i class="material-icons right">send</i>
-      </button>
-    </form>
+
+<div class="col s12 m12 l6">
+  <div class="card-panel">
+    <h4 class="header2">SignUp</h4>
+
+    <div class="row">
+
+      <form class="col s12 right-alert">
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="mdi-action-account-circle prefix"></i>
+            <input id="first_input2" class="validate" type="text" [(ngModel)]="formInfo.firstname" name="firstname">
+            <label for="first_input2" data-error="Please enter first name." data-success="Perfect!">First Name</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="mdi-action-account-circle prefix"></i>
+            <input id="first_input2" class="validate" type="text" [(ngModel)]="formInfo.lastnametname" name="lastname">
+            <label for="first_input2" data-error="Please enter last name." data-success="Perfect!">Last Name</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="mdi-action-verified-user prefix"></i>
+            <input id="age_input2" type="number" class="validate" [(ngModel)]="formInfo.age" name="age">
+            <label for="age_input2" data-error="Please enter your age." data-success="Perfect">Age</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="mdi-communication-email prefix"></i>
+            <input id="email_input2" type="email" class="validate">
+            <label for="email_input2" class="" data-error="Please enter valid email." data-success="Perfect!" [(ngModel)]="formInfo.email" name="email">Email</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="mdi-action-room prefix"></i>
+            <input id="url_input2" type="url" class="validate">
+            <label for="url_input2" class="" data-error="Please enter valid address." data-success="Perfect!" [(ngModel)]="formInfo.address" name="address" autocomplete="address-level2">Address</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="mdi-action-home prefix"></i>
+            <input id="url_input2" type="url" class="validate">
+            <label for="url_input2" class="" data-error="Please enter valid address." data-success="Perfect!" [(ngModel)]="formInfo.address" name="address" autocomplete="address-level2">City</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="mdi-action-perm-identity prefix"></i>
+            <input id="first_input2" class="validate" type="text" [(ngModel)]="formInfo.username" name="username">
+            <label for="first_input2" data-error="Please enter username." data-success="Perfect!">Username</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="mdi-communication-vpn-key prefix"></i>
+            <input id="password2" type="password" class="validate">
+            <label for="password2">Password</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <button (click)="signup()" class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                   <i class="material-icons right">send</i>
+                                 </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
