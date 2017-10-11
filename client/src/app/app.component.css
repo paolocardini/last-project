@@ -2,11 +2,7 @@ li {
   list-style: none;
 }
 
-agm-map {
-  height: 300px;
-  width: 400px;
-  float: right;
-}
+
  nav{
    height: 80px;
    background-color: rgba(101, 47, 79, 0.93);

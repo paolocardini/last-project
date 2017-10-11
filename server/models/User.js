@@ -8,11 +8,13 @@ const userSchema = new Schema({
   lastname: String,
   address: String,
   city: String,
+  country:String,
   email: String,
   age: Number,
   image: String,
-  lat: Number,
-  lng: Number,
+  lat: String,
+  lng: String,
+  message:[{type:Schema.Types.ObjectId, ref:'Message'}]
   profile:[{type:Schema.Types.ObjectId, ref:'instrumentProfile'}]
 
 }, {

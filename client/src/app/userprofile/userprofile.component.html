@@ -1,36 +1,46 @@
-<div class="background">
-
-    <div *ngIf="!user">
-      <h2>NO USER LOGGED IN</h2>
-    </div>
-    <div class="fotocontainer"></div>
-
-
-
-
-    <div  class="container">
-      <h4>USERNAME : {{ user.username }}</h4>
-      <div>
-        <ul>
-          <li>{{user.lastname}}</li>
-          <li>{{user.firstname}}</li>
-          <li>{{user.age}}</li>
-          <li>{{user.address}}</li>
-          <li>{{user.city}}</li>
-          <li>{{user.email}}</li>
-        </ul>
-      </div>
+<div *ngIf="!user">
+  <h2>NO USER LOGGED IN</h2>
+</div>
+<div class="card">
+  <div class="card-image waves-effect waves-block waves-light">
+    <img class="activator" src="http://www.kissfm.es/wp-content/uploads/2017/01/bowie.jpg">
+  </div>
+  <div class="card-content">
+    <span class="card-title activator grey-text text-darken-4">USERNAME : {{ user.username }}<i class="material-icons right">more_vert</i></span>
+    <p><a href="https://www.facebook.com/davidbowie/">my-web-page</a></p>
+  </div>
+  <div class="card-reveal">
+    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">reply</i></span>
+    <div>
+      <ul>
+        <li>{{user.lastname}}</li>
+        <li>{{user.firstname}}</li>
+        <li>{{user.age}}</li>
+        <li>{{user.address}}</li>
+        <li>{{user.city}}</li>
+        <li>{{user.email}}</li>
+      </ul>
 
       <button [routerLink]="['/create']" class="btn waves-effect waves-light" type="submit" name="action">ADD-INSTRUMENT-PROFILE
-        <i class="material-icons right"></i>
-      </button>
-      <button [routerLink]="['/show-instrument-profile']" class="btn waves-effect waves-light" type="submit" name="action">SHOW-INSTRUMENT-PROFILE
-        <i class="material-icons right"></i>
-      </button>
+          <i class="material-icons right"></i>
+        </button>
+      </div>
     </div>
+  </div>
 
-    <agm-map [latitude]="lat" [longitude]="lng">
-      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+
+
+<div class="container">
+  <div class="map-container">
+    <agm-map [zoom]="zoom" [latitude]="user.lat" [longitude]="user.lng">
+      <agm-marker [latitude]="user.lat" [longitude]="user.lng"></agm-marker>
     </agm-map>
+
+  </div>
+
+
+  <button [routerLink]="['/show-instrument-profile']" class="btn waves-effect waves-light" type="submit" name="action">SHOW-USERS-PROFILE
+        <i class="material-icons right"></i>
+      </button>
 
 </div>

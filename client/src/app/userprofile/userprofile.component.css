@@ -1,32 +1,17 @@
 agm-map {
-  height: 500px;
-  width: 500px;
-  position: absolute;
-  bottom: 300px;
-  left: 1050px;
-  top: 110px;
+  height: 400px;
+  width: 400px;
+
 }
 
 .container{
+  width: 400px;
+  height: 400px;
+  float: right;
+  display: inline-block;
+}
+
+.card{
   width: 600px;
-  height: 700px;
-  position: absolute;
-  left: 50px;
-  top: 430px;
-
-}
-
-.fotocontainer{
-  height: 300px;
-  width: 300px;
-  border: 2px solid black;
-  margin:50px 0 0 50px;
-}
-
-.background{
-background: url('');
-background-size: cover;
-height: 800px;
-margin-top: 0;
-
+  display: inline-block;
 }

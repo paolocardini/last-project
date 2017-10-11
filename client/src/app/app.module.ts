@@ -24,7 +24,7 @@ import { IsLoggedInService } from './services/isLoggedIn.canactivate.service';
 
 import { routes } from './routes';
 import { MessageMusiciansComponent } from './message-musicians/message-musicians.component';
-import { ShowUsersListComponent } from './show-users-list/show-users-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,8 +34,7 @@ import { ShowUsersListComponent } from './show-users-list/show-users-list.compon
     SignupformComponent,
     CreateInstrumentProfileComponent,
     ProfileListComponent,
-    MessageMusiciansComponent,
-    ShowUsersListComponent
+    MessageMusiciansComponent
 
   ],
   imports: [

@@ -4,8 +4,8 @@ const {ensureLoggedIn} = require('connect-ensure-login')
 const instrumentProfileController = require('../controllers/instrumentProfileController.js')
 
 router.get('/instrument-profile', userController.showInstrumentalProfileGet)
-router.post('/', userController.messageCreatePost)
-router.get('/users/message', userController.readMessageGet)
+// router.post('/', userController.messageCreatePost)
+// router.get('/users/message', userController.readMessageGet)
 
 
 

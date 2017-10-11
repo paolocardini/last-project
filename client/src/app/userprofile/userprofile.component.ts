@@ -10,6 +10,7 @@ import { AgmCoreModule } from '@agm/core';
 })
 export class UserprofileComponent implements OnInit {
   user: object;
+  zoom: number=15;
   lat: number = 51.678418;
   lng: number = 7.809007;
   constructor(public auth: AuthService) {

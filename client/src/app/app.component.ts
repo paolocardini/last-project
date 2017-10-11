@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+declare var $: any;
+
 
 @Component({
   selector: 'app-root',
@@ -17,5 +19,8 @@ export class AppComponent {
     this.auth.getLoginEventEmitter()
       .subscribe(user => this.user = user);
 
+    }
+    ngOnInit() {
+      $(".button-collapse").sideNav();
     }
 }

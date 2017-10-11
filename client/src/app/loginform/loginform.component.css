@@ -18,19 +18,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; }
 
-    .card-panel{
-      margin-left: 50px;
-      width: 800px;
-    }
 
 
 
 
 
 
-form{
-  width: 500px;
-}
+
+
 
 
 .mdi-action-perm-identity:before {

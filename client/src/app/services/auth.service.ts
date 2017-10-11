@@ -36,9 +36,9 @@ export class AuthService {
     return Observable.throw(e.json().message);
   }
 
-  signup(username, password, lastname, firstname, email, address, age, city) {
-    console.log("entrooo")
-    return this.http.post(`${BASEURL}/signup`, { username, password, lastname, firstname, email, address, age, city }, this.options)
+  signup( firstname, lastname, age, email, address, city, country, username, password,lat,lng) {
+    console.log("entrooo" + lat )
+    return this.http.post(`${BASEURL}/signup`, { firstname, lastname, age, email, address, city, country, username, password,lat,lng }, this.options)
       .map(res => res.json())
       .map(user => this.emitUserLoginEvent(user))
       .catch(this.handleError);
@@ -64,5 +64,12 @@ export class AuthService {
       .map(user => this.emitUserLoginEvent(user))
       .catch(this.handleError);
   }
+
+
+  getLocation(address){
+   return this.http.get('http://maps.google.com/maps/api/geocode/json?address=' + address)
+    //  .map(res => res.json())
+    //  .catch(this.handleError);
+ }
 
 }

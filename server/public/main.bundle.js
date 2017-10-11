@@ -21,7 +21,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "li {\n  list-style: none;\n}\n\n\nagm-map {\n  height: 300px;\n  width: 400px;\n  float: right;\n}\n body{\n   padding: 0;\n   margin: 0;\n }\n", ""]);
+exports.push([module.i, "li {\n  list-style: none;\n}\n\n\n nav{\n   height: 80px;\n   background-color: rgba(101, 47, 79, 0.93);\n   background: url('https://epicattorneymarketing.com/wp-content/uploads/2015/10/zoom-mic-music-wallpaper-desktop-background-music-picture-music-wallpaper-1.jpg');\n   background-size: cover;\n\n }\n", ""]);
 
 // exports
 
@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<!-- <div style=\"text-align:center\">\n  <ul>\n  <li><a [routerLink]=\"['/']\">Home</a></li>\n  <li><a [routerLink]=\"['/user']\">User Profile</a></li>\n  <li><a [routerLink]=\"['/login']\">Login</a></li>\n  <li><a [routerLink]=\"['/signup']\">Signup</a></li>\n  </ul>\n  <agm-map [latitude]=\"lat\" [longitude]=\"lng\">\n  <agm-marker [latitude]=\"lat\" [longitude]=\"lng\"></agm-marker>\n</agm-map> -->\n\n\n  <!-- Dropdown Structure -->\n<ul id=\"dropdown1\" class=\"dropdown-content\">\n  <li><a href=\"#!\">profile-one</a></li>\n  <li class=\"divider\"></li>\n  <li><a href=\"#!\">profile-two</a></li>\n  <li class=\"divider\"></li>\n  <li><a href=\"#!\">profile-three</a></li>\n</ul>\n<nav>\n  <div class=\"nav-wrapper\">\n    <a [routerLink]=\"['/']\" class=\"brand-logo\">HOME</a>\n    <ul class=\"right hide-on-med-and-down\">\n      <li><a [routerLink]=\"['/user']\">USER-PROFILE</a></li>\n      <li><a [routerLink]=\"['/login']\">LOGIN</a></li>\n      <li><a [routerLink]=\"['/signup']\">SIGNUP</a></li>\n      <li><a (click)=\"auth.logout().subscribe()\"> LOGOUT </a></li>\n            <!-- Dropdown Trigger -->\n      <li><a class=\"dropdown-button\" href=\"#!\" data-activates=\"dropdown1\">instrument-profile<i class=\"material-icons right\">arrow_drop_down</i></a></li>\n    </ul>\n  </div>\n</nav>\n<agm-map [latitude]=\"lat\" [longitude]=\"lng\">\n<agm-marker [latitude]=\"lat\" [longitude]=\"lng\"></agm-marker>\n</agm-map>\n\n\n\n  <router-outlet></router-outlet>\n"
+module.exports = "<!--\n<nav>\n  <div class=\"nav-wrapper\">\n    <a [routerLink]=\"['/']\" class=\"brand-logo\">HOME</a>\n    <ul class=\"right hide-on-med-and-down\">\n      <li><a *ngIf='user' [routerLink]=\"['/user']\">USER-PROFILE</a></li>\n      <li><a *ngIf='!user' [routerLink]=\"['/login']\">LOGIN</a></li>\n      <li><a *ngIf='!user' [routerLink]=\"['/signup']\">SIGNUP</a></li>\n      <li><a *ngIf='user' (click)=\"auth.logout().subscribe()\" [routerLink]=\"['/home']\"> LOGOUT </a></li>\n    </ul>\n  </div>\n</nav> -->\n\n\n<nav>\n  <div class=\" nav-wrapper text-lighten-4\">\n    <a [routerLink]=\"['/']\" class=\"brand-logo\"><img id =\"logo\"src=\"\" alt=\"\">HOME</a>\n    <a href=\"#\" materialize=\"button-collapse\" data-activates=\"mobile-demo\" class=\"button-collapse\"><i class=\"material-icons\">menu</i></a>\n    <ul *ngIf=\"!user\" class=\"right hide-on-med-and-down\">\n      <li><a [routerLink]=\"['/login']\"><i class=\"material-icons left\">perm_identity</i>Log-In</a></li>\n      <li><a [routerLink]=\"['/signup']\"><i class=\"material-icons left\">input</i>Sign-Up</a></li>\n    </ul>\n    <ul *ngIf=\"user\" class=\"right hide-on-med-and-down\">\n      <li><a [routerLink]=\"['/user']\"><i class=\"material-icons left\">perm_identity</i>MY-PAGE</a></li>\n      <li><a (click)=\"auth.logout().subscribe()\" [routerLink]=\"['/home']\"><i class=\"material-icons left\">exit_to_app</i>Logout</a></li>\n    </ul>\n    <ul class=\"side-nav\" id=\"mobile-demo\">\n      <ul *ngIf=\"!user\">\n        <li><a [routerLink]=\"['/']\">Home</a></li>\n        <li><a [routerLink]=\"['/login']\"><i class=\"material-icons left\">perm_identity</i>Log-In</a></li>\n        <li><a [routerLink]=\"['/signup']\"><i class=\"material-icons left\">input</i>Sign-Up</a></li>\n      </ul>\n      <ul *ngIf=\"user\">\n        <li><a [routerLink]=\"['/']\">Home</a></li>\n        <li><a [routerLink]=\"['/']\"><i class=\"material-icons left\">perm_identity</i>{{ user.username }} </a></li>\n        <li><a (click)=\"auth.logout().subscribe()\" [routerLink]=\"['/home']\"><i class=\"material-icons left\">exit_to_app</i>Logout</a></li>\n      </ul>\n    </ul>\n  </div>\n</nav>\n\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -58,12 +58,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppComponent = (function () {
     function AppComponent(auth) {
+        var _this = this;
         this.auth = auth;
-        this.title = 'angularauth';
+        this.title = 'band-pocket';
         this.lat = 51.678418;
         this.lng = 7.809007;
+        this.user = this.auth.getUser();
+        this.auth.getLoginEventEmitter()
+            .subscribe(function (user) { return _this.user = user; });
     }
-    ;
+    AppComponent.prototype.ngOnInit = function () {
+        $(".button-collapse").sideNav();
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -84,23 +90,25 @@ var _a;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__loginform_loginform_component__ = __webpack_require__("../../../../../src/app/loginform/loginform.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__agm_core__ = __webpack_require__("../../../../@agm/core/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__userprofile_userprofile_component__ = __webpack_require__("../../../../../src/app/userprofile/userprofile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_isLoggedIn_canactivate_service__ = __webpack_require__("../../../../../src/app/services/isLoggedIn.canactivate.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__routes__ = __webpack_require__("../../../../../src/app/routes.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__signupform_signupform_component__ = __webpack_require__("../../../../../src/app/signupform/signupform.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__agm_core__ = __webpack_require__("../../../../@agm/core/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__create_profile_create_profile_component__ = __webpack_require__("../../../../../src/app/create-profile/create-profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__loginform_loginform_component__ = __webpack_require__("../../../../../src/app/loginform/loginform.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__signupform_signupform_component__ = __webpack_require__("../../../../../src/app/signupform/signupform.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__userprofile_userprofile_component__ = __webpack_require__("../../../../../src/app/userprofile/userprofile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__profile_list_profile_list_component__ = __webpack_require__("../../../../../src/app/profile-list/profile-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__create_profile_create_profile_component__ = __webpack_require__("../../../../../src/app/create-profile/create-profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_instrument_service__ = __webpack_require__("../../../../../src/app/services/instrument.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__profile_list_profile_list_component__ = __webpack_require__("../../../../../src/app/profile-list/profile-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_isLoggedIn_canactivate_service__ = __webpack_require__("../../../../../src/app/services/isLoggedIn.canactivate.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__routes__ = __webpack_require__("../../../../../src/app/routes.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__message_musicians_message_musicians_component__ = __webpack_require__("../../../../../src/app/message-musicians/message-musicians.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -114,11 +122,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+// Packages
+
+// My components
 
 
 
 
 
+
+// Services
 
 
 
@@ -133,25 +146,31 @@ var AppModule = (function () {
 AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_5__loginform_loginform_component__["a" /* LoginformComponent */],
+            __WEBPACK_IMPORTED_MODULE_0__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__loginform_loginform_component__["a" /* LoginformComponent */],
             __WEBPACK_IMPORTED_MODULE_7__home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__userprofile_userprofile_component__["a" /* UserprofileComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__signupform_signupform_component__["a" /* SignupformComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__create_profile_create_profile_component__["a" /* CreateInstrumentProfileComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__profile_list_profile_list_component__["a" /* ProfileListComponent */]
+            __WEBPACK_IMPORTED_MODULE_10__userprofile_userprofile_component__["a" /* UserprofileComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__signupform_signupform_component__["a" /* SignupformComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__create_profile_create_profile_component__["a" /* CreateInstrumentProfileComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__profile_list_profile_list_component__["a" /* ProfileListComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__message_musicians_message_musicians_component__["a" /* MessageMusiciansComponent */]
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_9__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_11__routes__["a" /* routes */]),
-            __WEBPACK_IMPORTED_MODULE_13__agm_core__["a" /* AgmCoreModule */].forRoot({
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_17__routes__["a" /* routes */]),
+            __WEBPACK_IMPORTED_MODULE_6__agm_core__["a" /* AgmCoreModule */].forRoot({
                 apiKey: 'AIzaSyDPLpdo62Gii7eEBdUk8qXmA2x6YVN0bNI'
             })
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_6__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_10__services_isLoggedIn_canactivate_service__["a" /* IsLoggedInService */], __WEBPACK_IMPORTED_MODULE_15__services_instrument_service__["a" /* InstrumentService */]],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
+        providers: [
+            __WEBPACK_IMPORTED_MODULE_13__services_auth_service__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_16__services_isLoggedIn_canactivate_service__["a" /* IsLoggedInService */],
+            __WEBPACK_IMPORTED_MODULE_15__services_instrument_service__["a" /* InstrumentService */],
+            __WEBPACK_IMPORTED_MODULE_14__services_user_service__["a" /* UserService */]
+        ],
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_0__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
@@ -180,7 +199,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/create-profile/create-profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form class = \"addForm\">\n  <h2> Add Instrument Profile </h2>\n  <label>EXPERIENCE</label>\n  <input type=\"text\" [(ngModel)]=\"formInfo.experience\" name=\"experience\"/>\n  <br>\n  <label>DESCRIPTION</label>\n  <input type=\"text\" [(ngModel)]=\"formInfo.description\" name=\"description\"/>\n  <br>\n  <label>STYLE</label>\n  <input type=\"text\" [(ngModel)]=\"formInfo.style\" name=\"style\"/>\n  <br>\n  <label>INSTRUMENT</label>\n  <input type=\"text\" [(ngModel)]=\"formInfo.instrument\" name=\"instrument\"/>\n\n\n\n\n  <button (click)=\"createInstrumentProfile()\" class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">CREATE-INSTRUMENT-PROFILE\n      <i class=\"material-icons right\"></i>\n    </button>\n</form>\n"
+module.exports = "<form class=\"addForm\">\n  <h2> Add Instrument Profile </h2>\n  <label>EXPERIENCE</label>\n  <input type=\"text\" [(ngModel)]=\"formInfo.experience\" name=\"experience\" />\n  <br>\n  <label>DESCRIPTION</label>\n  <input type=\"text\" [(ngModel)]=\"formInfo.description\" name=\"description\" />\n  <br>\n  <label>STYLE</label>\n  <input type=\"text\" [(ngModel)]=\"formInfo.style\" name=\"style\" />\n  <br>\n  <label>INSTRUMENT</label>\n  <input type=\"text\" [(ngModel)]=\"formInfo.instrument\" name=\"instrument\" />\n  <!-- <form action=\"#\">\n    <div class=\"file-field input-field\">\n      <div class=\"btn\">\n        <span>PHOTO</span>\n        <input type=\"file\" multiple>\n        <i class=\"material-icons right\">add_a_photo</i>\n      </div>\n      <div class=\"file-path-wrapper\">\n        <input class=\"file-path validate\" type=\"text\" placeholder=\"Upload one or more files\">\n      </div>\n    </div>\n  </form>\n  <form action=\"#\">\n    <div class=\"file-field input-field\">\n      <div class=\"btn\">\n        <span>AUDIO</span>\n        <input type=\"file\" multiple>\n        <i class=\"material-icons right\">audiotrack</i>\n      </div>\n      <div class=\"file-path-wrapper\">\n        <input class=\"file-path validate\" type=\"text\" placeholder=\"Upload one or more files\">\n      </div>\n    </div>\n  </form> -->\n  <button (click)=\"createInstrumentProfile()\" class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">CREATE-INSTRUMENT-PROFILE\n    <i class=\"material-icons right\">send</i>\n  </button>\n</form>\n"
 
 /***/ }),
 
@@ -227,7 +246,7 @@ var CreateInstrumentProfileComponent = (function () {
             console.log("create instrument profile with " + experience + " " + description + " " + style + " " + instrument);
             this.inst.createInstrumentProfile(experience, description, style, instrument)
                 .map(function (user) { return console.log(user); })
-                .subscribe(function (user) { return _this.router.navigate(['/home']); });
+                .subscribe(function (user) { return _this.router.navigate(['/user']); });
         }
         else {
             console.log("You must set a username and a password");
@@ -257,7 +276,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "body{\n  background-color: black;\n}\n", ""]);
+exports.push([module.i, ".title{\n  background-color: green;\n  text-align: center;\n}\n\n\n\n{\n  background-color: rgba(204, 160, 15, 0.94);\n  height: 150px;\n  width: 2000px;\n\n}\n", ""]);
 
 // exports
 
@@ -270,7 +289,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>WELCOME TO MY BAND POCKET!</h1>\n"
+module.exports = "\n\n\n\n<div class=\"\">\n    <div class=\"logo\"></div>\n</div>\n\n\n<div class=\"parallax-container\">\n  <div class=\"parallax\"><img src=\"http://warp.la/wp-content/uploads/2017/02/music-wallpaper-16.jpg\" heigth=\"500px\"></div>\n</div>\n<div class=\"section white\" id = \"container\">\n  <div class=\"row container\">\n    <h2 class=\"header\">MY-BAND-POCKET</h2>\n    <p class=\"grey-text text-darken-3 lighten-3\">My Band Pocket is the only one application tha allows you to keep in touch with every musician in the world!</p>\n  </div>\n</div>\n<div class=\"parallax-container\">\n  <div class=\"parallax\"><img src=\"https://cdn.allwallpaper.in/wallpapers/1680x1050/14165/audio-jack-1680x1050-wallpaper.jpg\" heigth=\"500px\"></div>\n</div>\n"
 
 /***/ }),
 
@@ -294,6 +313,9 @@ var HomeComponent = (function () {
     function HomeComponent() {
     }
     HomeComponent.prototype.ngOnInit = function () {
+        $(document).ready(function () {
+            $('.parallax').parallax();
+        });
     };
     return HomeComponent;
 }());
@@ -318,7 +340,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "form{\n  width: 700px;\n}\n", ""]);
+exports.push([module.i, "\n@font-face {\n  font-family: \"Material-Design-Icons\";\n  src: url(\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/font/material-design-icons/Material-Design-Icons.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/font/material-design-icons/Material-Design-Icons.woff2\") format(\"woff2\"), url(\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/font/material-design-icons/Material-Design-Icons.woff\") format(\"woff\"), url(\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/font/material-design-icons/Material-Design-Icons.ttf\") format(\"truetype\"), url(\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/font/material-design-icons/Material-Design-Icons.svg#Material-Design-Icons\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n\n  [class^=\"mdi-\"], [class*=\" mdi-\"] {\n    font-family: \"Material-Design-Icons\";\n    speak: none;\n    font-style: normal;\n    font-weight: normal;\n    font-variant: normal;\n    text-transform: none;\n    text-rendering: auto;\n    /* Better Font Rendering =========== */\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale; }\n\n\n\n\n\n\n\n\n\n\n\n.mdi-action-perm-identity:before {\ncontent: \"\\E650\"; }\n\n.mdi-communication-vpn-key:before {\ncontent: \"\\E6FA\"; }\n", ""]);
 
 // exports
 
@@ -331,7 +353,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/loginform/loginform.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form >\n  <h2> Login </h2>\n  <label> Username </label>\n  <input type=\"text\" [(ngModel)]=\"formInfo.username\" name=\"username\"/>\n  <br>\n  <label> Password </label>\n  <input type=\"password\" [(ngModel)]=\"formInfo.password\" name=\"password\"/>\n\n  <button (click)=\"login()\" class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">LOGIN\n      <i class=\"material-icons right\">send</i>\n    </button>\n</form>\n"
+module.exports = "<div class=\"col s12 m12 l6\">\n  <div class=\"card-panel\">\n    <h4 class=\"header2\">Login</h4>\n\n    <div class=\"row\">\n\n      <form class=\"col s12 right-alert\">\n\n        <div class=\"row\">\n          <div class=\"input-field col s12\">\n            <i class=\"mdi-action-perm-identity prefix\"></i>\n            <input id=\"first_input2\" class=\"validate\" type=\"text\" [(ngModel)]=\"formInfo.username\" name=\"username\">\n            <label for=\"first_input2\" data-error=\"Please enter username.\" data-success=\"Perfect!\">Username</label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"input-field col s12\">\n            <i class=\"mdi-communication-vpn-key prefix\"></i>\n            <input id=\"password2\" type=\"password\" class=\"validate\" [(ngModel)]=\"formInfo.password\" name=\"password\">\n            <label for=\"password2\">Password</label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"input-field col s12\">\n            <button (click)=\"login()\" class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">Submit\n                                 <i class=\"material-icons right\">send</i>\n                               </button>\n          </div>\n        </div>\n\n      </form>\n\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -395,7 +417,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ "../../../../../src/app/profile-list/profile-list.component.css":
+/***/ "../../../../../src/app/message-musicians/message-musicians.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -413,10 +435,71 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
+/***/ "../../../../../src/app/message-musicians/message-musicians.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  message-musicians works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/message-musicians/message-musicians.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageMusiciansComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MessageMusiciansComponent = (function () {
+    function MessageMusiciansComponent() {
+    }
+    MessageMusiciansComponent.prototype.ngOnInit = function () {
+    };
+    return MessageMusiciansComponent;
+}());
+MessageMusiciansComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Component */])({
+        selector: 'app-message-musicians',
+        template: __webpack_require__("../../../../../src/app/message-musicians/message-musicians.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/message-musicians/message-musicians.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], MessageMusiciansComponent);
+
+//# sourceMappingURL=message-musicians.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/profile-list/profile-list.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".profile-user {\n  margin: 30px;\n}\n\n\n.profile-music {\n  margin: 20px;\n  height: 200px;\n  width: 300px;\n  border: 4px solid green;\n  border-radius: 5%;\n  box-shadow: 10px 10px 5px black;\n\n\n}\n\nagm-map {\n  width: 100px;\n}\n\n.map-container{\n\n  height: 200px;\n  width: 200px;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
 /***/ "../../../../../src/app/profile-list/profile-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>this workss</p>\n<p *ngIf=\"user\">{{user.profile[0]}}</p>\n"
+module.exports = "<div class=\"row\">\n  <div class=\"col s12 m6\">\n    <div class=\"card blue-grey darken-1\">\n      <div class=\"card-content white-text\">\n\n        <div *ngFor='let profile of userProfileList' class=\"profile-user\">\n          <span class=\"card-title\">{{ profile.username }}</span>\n          <div *ngFor=\"let instrument of profile.profile\">\n            <p>I PLAY : {{instrument.instrument}}</p>\n            <p>STYLE OF MUSIC : {{instrument.style}}</p>\n            <p>MY EXPERIENCE : {{instrument.experience}}</p>\n            <p>I'M SEARCHING FOR : {{instrument.description}}</p>\n\n          </div>\n\n          <div class=\"card-action\">\n\n            <button [routerLink]=\"['/user']\" class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">SEND A\n                <i class=\"material-icons right\">message</i>\n              </button>\n          </div>\n        </div>\n\n\n      </div>\n\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -425,8 +508,9 @@ module.exports = "<p>this workss</p>\n<p *ngIf=\"user\">{{user.profile[0]}}</p>\
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_instrument_service__ = __webpack_require__("../../../../../src/app/services/instrument.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_instrument_service__ = __webpack_require__("../../../../../src/app/services/instrument.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -440,20 +524,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ProfileListComponent = (function () {
-    function ProfileListComponent(instrumentService, auth) {
+    function ProfileListComponent(instrumentService, auth, userService) {
         var _this = this;
         this.instrumentService = instrumentService;
         this.auth = auth;
-        this.user = this.auth.getUser();
-        this.auth.getLoginEventEmitter()
-            .subscribe(function (user) {
-            console.log(user);
-            _this.user = user;
-        });
+        this.userService = userService;
+        // this.user = this.auth.getUser();
+        // this.auth.getLoginEventEmitter().subscribe( user =>{
+        //   console.log(user)
+        //   this.user=user
+        // })
+        this.userService.getUserProfiles().subscribe(function (userList) {
+            console.log("" + userList);
+            _this.userProfileList = userList;
+        }),
+            function (err) { console.log("" + err); };
     }
-    ProfileListComponent.prototype.ngOnInit = function () {
-    };
+    ProfileListComponent.prototype.ngOnInit = function () { };
     return ProfileListComponent;
 }());
 ProfileListComponent = __decorate([
@@ -462,10 +551,10 @@ ProfileListComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/profile-list/profile-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/profile-list/profile-list.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_instrument_service__["a" /* InstrumentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_instrument_service__["a" /* InstrumentService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__services_instrument_service__["a" /* InstrumentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_instrument_service__["a" /* InstrumentService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_user_service__["a" /* UserService */]) === "function" && _c || Object])
 ], ProfileListComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=profile-list.component.js.map
 
 /***/ }),
@@ -535,7 +624,7 @@ var AuthService = (function () {
     function AuthService(http, router) {
         this.http = http;
         this.router = router;
-        this.userLoginEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */]();
+        this.userLoginEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* EventEmitter */]();
         this.options = { withCredentials: true };
         this.isLoggedIn().subscribe();
     }
@@ -554,10 +643,10 @@ var AuthService = (function () {
         console.log("AUTH ERROR");
         return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["Observable"].throw(e.json().message);
     };
-    AuthService.prototype.signup = function (username, password, lastname, firstname, email, address, age, city) {
+    AuthService.prototype.signup = function (firstname, lastname, age, email, address, city, country, username, password, lat, lng) {
         var _this = this;
-        console.log("entrooo");
-        return this.http.post(BASEURL + "/signup", { username: username, password: password, lastname: lastname, firstname: firstname, email: email, address: address, age: age, city: city }, this.options)
+        console.log("entrooo" + lat);
+        return this.http.post(BASEURL + "/signup", { firstname: firstname, lastname: lastname, age: age, email: email, address: address, city: city, country: country, username: username, password: password, lat: lat, lng: lng }, this.options)
             .map(function (res) { return res.json(); })
             .map(function (user) { return _this.emitUserLoginEvent(user); })
             .catch(this.handleError);
@@ -583,10 +672,15 @@ var AuthService = (function () {
             .map(function (user) { return _this.emitUserLoginEvent(user); })
             .catch(this.handleError);
     };
+    AuthService.prototype.getLocation = function (address) {
+        return this.http.get('http://maps.google.com/maps/api/geocode/json?address=' + address);
+        //  .map(res => res.json())
+        //  .catch(this.handleError);
+    };
     return AuthService;
 }());
 AuthService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], AuthService);
 
@@ -640,7 +734,7 @@ var InstrumentService = (function () {
     return InstrumentService;
 }());
 InstrumentService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], InstrumentService);
 
@@ -682,12 +776,70 @@ var IsLoggedInService = (function () {
     return IsLoggedInService;
 }());
 IsLoggedInService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */]) === "function" && _a || Object])
 ], IsLoggedInService);
 
 var _a;
 //# sourceMappingURL=isLoggedIn.canactivate.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/user.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var BASEURL = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].BASEURL + "/auth";
+var BASE_URL = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].BASEURL;
+var UserService = (function () {
+    function UserService(http, router) {
+        this.http = http;
+        this.router = router;
+        this.userLoginEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* EventEmitter */]();
+        this.options = { withCredentials: true };
+    }
+    UserService.prototype.getUserProfiles = function () {
+        return this.http.get(BASE_URL + "/user/instrument-profile")
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    UserService.prototype.showUsersProfiles = function () {
+        return this.http.get(BASE_URL + "/user/users-profiles")
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    return UserService;
+}());
+UserService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _b || Object])
+], UserService);
+
+var _a, _b;
+//# sourceMappingURL=user.service.js.map
 
 /***/ }),
 
@@ -699,7 +851,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".container{\n  width: 500px;\n  height: 810px;\n  border: 3px solid grey;\n  border-radius: 3%;\n  box-shadow: 10%;\n\n}\n#signupform{\n  margin-bottom: 200px;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n.mdi-action-verified-user:before  {\n  content: \"\\E68E\";\n}\n\n.mdi-action-account-circle:before {\n  content: \"\\E606\"; }\n\n\n.mdi-communication-email:before {\n  content: \"\\E6E3\"; }\n\n  .mdi-communication-vpn-key:before {\n  content: \"\\E6FA\"; }\n\n\n.mdi-action-room:before {\n  content: \"\\E65D\"; }\n\n  .mdi-action-home:before {\n  content: \"\\E636\"; }\n\n  .mdi-action-perm-identity:before {\n  content: \"\\E650\"; }\n\n@font-face {\n  font-family: \"Material-Design-Icons\";\n  src: url(\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/font/material-design-icons/Material-Design-Icons.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/font/material-design-icons/Material-Design-Icons.woff2\") format(\"woff2\"), url(\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/font/material-design-icons/Material-Design-Icons.woff\") format(\"woff\"), url(\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/font/material-design-icons/Material-Design-Icons.ttf\") format(\"truetype\"), url(\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/font/material-design-icons/Material-Design-Icons.svg#Material-Design-Icons\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n[class^=\"mdi-\"], [class*=\" mdi-\"] {\n  font-family: \"Material-Design-Icons\";\n  speak: none;\n  font-style: normal;\n  font-weight: normal;\n  font-variant: normal;\n  text-transform: none;\n  text-rendering: auto;\n  /* Better Font Rendering =========== */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n", ""]);
 
 // exports
 
@@ -712,7 +864,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/signupform/signupform.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container\">\n  <form id = \"signupform\">\n    <h2> Signup </h2>\n    <label>firstname</label>\n    <input type=\"text\" [(ngModel)]=\"formInfo.firstname\" name=\"firstname\"/>\n    <br>\n    <label>lastname</label>\n    <input type=\"text\" [(ngModel)]=\"formInfo.lastname\" name=\"lastname\"/>\n    <br>\n    <label>age</label>\n    <input type=\"text\" [(ngModel)]=\"formInfo.age\" name=\"age\"/>\n    <br>\n    <label>address</label>\n    <input type=\"text\" [(ngModel)]=\"formInfo.address\" name=\"address\" autocomplete=\"address-level2\"/>\n    <br>\n    <label>city</label>\n    <input type=\"text\" [(ngModel)]=\"formInfo.city\" name=\"city\"/>\n    <br>\n    <label>email</label>\n    <input type=\"text\" [(ngModel)]=\"formInfo.email\" name=\"email\"/>\n    <br>\n    <label> Username </label>\n    <input type=\"text\" [(ngModel)]=\"formInfo.username\" name=\"username\"/>\n    <br>\n    <label> Password </label>\n    <input type=\"password\" [(ngModel)]=\"formInfo.password\" name=\"password\"/>\n\n\n\n    <button (click)=\"signup()\" class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">Submit\n      <i class=\"material-icons right\">send</i>\n    </button>\n  </form>\n</div>\n"
+module.exports = "<div class=\"container-background\">\n\n\n  <div class=\"col s12 m12 l6\">\n    <div class=\"card-panel\">\n      <h4 class=\"header2\">SignUp</h4>\n\n      <div class=\"row\">\n\n        <form class=\"col s12 right-alert\">\n\n          <div class=\"row\">\n            <div class=\"input-field col s12\">\n              <i class=\"mdi-action-account-circle prefix\"></i>\n              <input id=\"first_input2\" class=\"validate\" type=\"text\" [(ngModel)]=\"formInfo.firstname\" name=\"firstname\">\n              <label for=\"first_input2\" data-error=\"Please enter first name.\" data-success=\"Perfect!\">First Name</label>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"input-field col s12\">\n              <i class=\"mdi-action-account-circle prefix\"></i>\n              <input id=\"first_input2\" class=\"validate\" type=\"text\" [(ngModel)]=\"formInfo.lastname\" name=\"lastname\">\n              <label for=\"first_input2\" data-error=\"Please enter last name.\" data-success=\"Perfect!\">Last Name</label>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"input-field col s12\">\n              <i class=\"mdi-action-verified-user prefix\"></i>\n              <input id=\"age_input2\" type=\"number\" class=\"validate\" [(ngModel)]=\"formInfo.age\" name=\"age\">\n              <label for=\"age_input2\" data-error=\"Please enter your age.\" data-success=\"Perfect\">Age</label>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"input-field col s12\">\n              <i class=\"mdi-communication-email prefix\"></i>\n              <input id=\"email_input2\" type=\"email\" class=\"validate\" [(ngModel)]=\"formInfo.email\" name=\"email\">\n              <label for=\"email_input2\" class=\"\" data-error=\"Please enter valid email.\" data-success=\"Perfect!\">Email</label>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"input-field col s12\">\n              <i class=\"mdi-action-room prefix\"></i>\n              <input id=\"address_input2\" type=\"text\" class=\"validate\" [(ngModel)]=\"formInfo.address\" name=\"address\">\n              <label for=\"address_input2\" class=\"\" data-error=\"Please enter valid address.\" data-success=\"Perfect!\">Address</label>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"input-field col s12\">\n              <i class=\"mdi-action-home prefix\"></i>\n              <input id=\"city_input2\" type=\"text\" class=\"validate\" [(ngModel)]=\"formInfo.city\" name=\"city\">\n              <label for=\"city_input2\" class=\"\" data-error=\"Please enter valid city.\" data-success=\"Perfect!\">City</label>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"input-field col s12\">\n              <i class=\"mdi-action-home prefix\"></i>\n              <input id=\"country_input2\" type=\"text\" class=\"validate\" [(ngModel)]=\"formInfo.country\" name=\"country\">\n              <label for=\"country_input2\" class=\"\" data-error=\"Please enter valid country.\" data-success=\"Perfect!\">Country</label>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"input-field col s12\">\n              <i class=\"mdi-action-perm-identity prefix\"></i>\n              <input id=\"first_input2\" class=\"validate\" type=\"text\" [(ngModel)]=\"formInfo.username\" name=\"username\">\n              <label for=\"first_input2\" data-error=\"Please enter username.\" data-success=\"Perfect!\">Username</label>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"input-field col s12\">\n              <i class=\"mdi-communication-vpn-key prefix\"></i>\n              <input id=\"password2\" type=\"password\" class=\"validate\" [(ngModel)]=\"formInfo.password\" name=\"password\">\n              <label for=\"password2\">Password</label>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"input-field col s12\">\n              <button (click)=\"signup()\" class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">Submit\n                                   <i class=\"material-icons right\">send</i>\n                                 </button>\n            </div>\n          </div>\n\n        </form>\n      </div>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -741,30 +893,41 @@ var SignupformComponent = (function () {
         this.auth = auth;
         this.router = router;
         this.formInfo = {
-            username: "",
-            password: "",
-            lastname: "",
             firstname: "",
+            lastname: "",
             age: "",
             email: "",
             address: "",
-            city: ""
+            city: "",
+            country: "",
+            username: "",
+            password: "",
+            lat: "",
+            lng: ""
         };
     }
     SignupformComponent.prototype.ngOnInit = function () {
     };
     SignupformComponent.prototype.signup = function () {
         var _this = this;
-        var _a = this.formInfo, username = _a.username, password = _a.password, lastname = _a.lastname, firstname = _a.firstname, email = _a.email, address = _a.address, age = _a.age, city = _a.city;
-        if (username != "" && password != "" && lastname != "" && firstname != "" && age != "" && address != "" && city != "" && email != "") {
-            console.log("Signup with " + username + " " + password + " " + lastname + " " + firstname + " " + age + " " + address + " " + city + " " + email);
-            this.auth.signup(username, password, lastname, firstname, email, address, age, city)
-                .map(function (user) { return console.log(user); })
-                .subscribe(function (user) { return _this.router.navigate(['/home']); });
-        }
-        else {
-            console.log("You must set a username and a password");
-        }
+        var _a = this.formInfo, firstname = _a.firstname, lastname = _a.lastname, age = _a.age, email = _a.email, address = _a.address, city = _a.city, country = _a.country, username = _a.username, password = _a.password;
+        var place = address + ',' + city + ',' + country;
+        this.auth.getLocation(place)
+            .subscribe(function (res) {
+            console.log(res);
+            var lat = res.json().results[0].geometry.location.lat;
+            var lng = res.json().results[0].geometry.location.lng;
+            console.log(_this.formInfo.lat);
+            if (firstname != "" && lastname != "" && age != "" && email != "" && address != "" && city != "" && country != "") {
+                console.log("Signup with " + firstname + " " + lastname + " " + age + " " + email + " " + address + " " + city + " " + country + " " + username + " " + password + " " + lat + " " + lng);
+                _this.auth.signup(firstname, lastname, age, email, address, city, country, username, password, lat, lng)
+                    .map(function (user) { return console.log(user); })
+                    .subscribe(function (user) { return _this.router.navigate(['/home']); });
+            }
+            else {
+                console.log("You must set a username and a password");
+            }
+        });
     };
     return SignupformComponent;
 }());
@@ -790,7 +953,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "agm-map {\n  height: 400px;\n  width: 400px;\n\n}\n\n.container{\n  width: 400px;\n  height: 400px;\n  float: right;\n  display: inline-block;\n}\n\n.card{\n  width: 600px;\n  display: inline-block;\n}\n", ""]);
 
 // exports
 
@@ -803,7 +966,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/userprofile/userprofile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n\n<div *ngIf=\"!user\">\n  <h2>NO USER LOGGED IN</h2>\n</div>\n\n<div *ngIf=\"user\">\n  <h4> You are now logged in as {{ user.username }}!! </h4>\n  <div >\n    <ul>\n      <li>{{user.lastname}}</li>\n      <li>{{user.firstname}}</li>\n      <li>{{user.age}}</li>\n      <li>{{user.address}}</li>\n      <li>{{user.city}}</li>\n      <li>{{user.email}}</li>\n      <li>{{user.profile}}</li>\n    </ul>\n\n  </div>\n\n  <!-- <div class=\"listInstrument\" *ngFor= \"let user of users\">\n    <p>USER-NAME: {{user.firstname }}</p>\n    <p>USER-LASTNAME: {{user.lasttname }}</p>\n    <p>AGE: {{user.center.age }}</p>\n    <p>ADDRESS: {{user.address }}</p>\n    <p>CITY: {{user.city }}</p>\n    <p>EMAIL: {{user.email }}</p>\n    <p>PROFILE: {{user.profile }}</p>\n\n  </div> -->\n  <button [routerLink]=\"['/create']\" class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">ADD-INSTRUMENT-PROFILE\n      <i class=\"material-icons right\"></i>\n    </button>\n\n\n\n\n\n</div>\n"
+module.exports = "<div *ngIf=\"!user\">\n  <h2>NO USER LOGGED IN</h2>\n</div>\n<div class=\"card\">\n  <div class=\"card-image waves-effect waves-block waves-light\">\n    <img class=\"activator\" src=\"http://www.kissfm.es/wp-content/uploads/2017/01/bowie.jpg\">\n  </div>\n  <div class=\"card-content\">\n    <span class=\"card-title activator grey-text text-darken-4\">USERNAME : {{ user.username }}<i class=\"material-icons right\">more_vert</i></span>\n    <p><a href=\"https://www.facebook.com/davidbowie/\">my-web-page</a></p>\n  </div>\n  <div class=\"card-reveal\">\n    <span class=\"card-title grey-text text-darken-4\">Card Title<i class=\"material-icons right\">reply</i></span>\n    <div>\n      <ul>\n        <li>{{user.lastname}}</li>\n        <li>{{user.firstname}}</li>\n        <li>{{user.age}}</li>\n        <li>{{user.address}}</li>\n        <li>{{user.city}}</li>\n        <li>{{user.email}}</li>\n      </ul>\n\n      <button [routerLink]=\"['/create']\" class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">ADD-INSTRUMENT-PROFILE\n          <i class=\"material-icons right\"></i>\n        </button>\n      </div>\n    </div>\n  </div>\n\n\n\n<div class=\"container\">\n  <div class=\"map-container\">\n    <agm-map [zoom]=\"zoom\" [latitude]=\"user.lat\" [longitude]=\"user.lng\">\n      <agm-marker [latitude]=\"user.lat\" [longitude]=\"user.lng\"></agm-marker>\n    </agm-map>\n\n  </div>\n\n\n  <button [routerLink]=\"['/show-instrument-profile']\" class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">SHOW-USERS-PROFILE\n        <i class=\"material-icons right\"></i>\n      </button>\n\n</div>\n"
 
 /***/ }),
 
@@ -829,6 +992,9 @@ var UserprofileComponent = (function () {
     function UserprofileComponent(auth) {
         var _this = this;
         this.auth = auth;
+        this.zoom = 15;
+        this.lat = 51.678418;
+        this.lng = 7.809007;
         this.user = this.auth.getUser();
         this.auth.getLoginEventEmitter()
             .subscribe(function (user) { return _this.user = user; });
