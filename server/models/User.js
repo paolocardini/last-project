@@ -14,8 +14,8 @@ const userSchema = new Schema({
   image: String,
   lat: String,
   lng: String,
-  message:[{type:Schema.Types.ObjectId, ref:'Message'}]
-  profile:[{type:Schema.Types.ObjectId, ref:'instrumentProfile'}]
+  message: [{type:Schema.Types.ObjectId, ref:'Message'}],
+  profile: [{type:Schema.Types.ObjectId, ref:'instrumentProfile'}]
 
 }, {
   timestamps: {
