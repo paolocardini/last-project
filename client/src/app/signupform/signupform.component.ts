@@ -42,8 +42,8 @@ export class SignupformComponent implements OnInit {
     this.auth.getLocation(place)
       .subscribe((res) => {
         console.log(res)
-        const lat = res.json().results[0].geometry.location.lat;
-        const lng = res.json().results[0].geometry.location.lng;
+        const lat = res.results[0].geometry.location.lat;
+        const lng = res.results[0].geometry.location.lng;
         console.log(this.formInfo.lat)
         if (firstname != "" && lastname != "" && age != "" && email != "" && address != "" && city != "" && country != "" ) {
           console.log(`Signup with ${firstname} ${lastname} ${age} ${email} ${address} ${city} ${country} ${username} ${password} ${lat} ${lng}`)

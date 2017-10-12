@@ -68,8 +68,8 @@ export class AuthService {
 
   getLocation(address){
    return this.http.get('http://maps.google.com/maps/api/geocode/json?address=' + address)
-    //  .map(res => res.json())
-    //  .catch(this.handleError);
+     .map(res => res.json())
+     .catch(this.handleError);
  }
 
 }

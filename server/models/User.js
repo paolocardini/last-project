@@ -12,8 +12,8 @@ const userSchema = new Schema({
   email: String,
   age: Number,
   image: String,
-  lat: String,
-  lng: String,
+  lat: Number,
+  lng: Number,
   message: [{type:Schema.Types.ObjectId, ref:'Message'}],
   profile: [{type:Schema.Types.ObjectId, ref:'instrumentProfile'}]
 
