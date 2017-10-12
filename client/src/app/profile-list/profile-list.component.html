@@ -15,8 +15,8 @@
 
           <div class="card-action">
 
-            <button [routerLink]="['/user']" class="btn waves-effect waves-light" type="submit" name="action">SEND A
-                <i class="material-icons right">message</i>
+            <button (click) = "navigateToRoom(profile.username,profile._id)" class="btn waves-effect waves-light" type="submit" name="action">GO TO
+                <i class="material-icons right">chat</i>
               </button>
           </div>
         </div>

@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class InstrumentService {
 
-  public BASEURL = environment.BASEURL;
+  public BASEURL = environment.BASE_URL;
   private options = { withCredentials: true };
 
 

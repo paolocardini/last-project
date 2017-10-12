@@ -18,7 +18,8 @@ export class ProfileListComponent implements OnInit {
   constructor(
     public instrumentService: InstrumentService,
     private auth: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {
     // this.user = this.auth.getUser();
     // this.auth.getLoginEventEmitter().subscribe( user =>{
@@ -32,5 +33,17 @@ export class ProfileListComponent implements OnInit {
       err => { console.log(`${err}`) }
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.auth.isLoggedIn().subscribe(user =>{
+      this.user = user
+    })
+  }
+
+
+  navigateToRoom(elem, id){
+    console.log(id)
+  const arrNames = [elem.toLowerCase(), this.user['username'].toLowerCase()]
+  const roomName = arrNames.sort().join('')
+  this.router.navigate(['/chat-band-pocket', roomName, id])
+}
 }

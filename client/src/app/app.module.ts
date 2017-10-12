@@ -21,6 +21,7 @@ import { AuthService } from './services/auth.service'
 import { UserService } from './services/user.service'
 import { InstrumentService } from './services/instrument.service';
 import { IsLoggedInService } from './services/isLoggedIn.canactivate.service';
+import { ChatService } from './services/chat.service';
 
 import { routes } from './routes';
 import { MessageMusiciansComponent } from './message-musicians/message-musicians.component';
@@ -50,6 +51,7 @@ import { MessageMusiciansComponent } from './message-musicians/message-musicians
     AuthService,
     IsLoggedInService,
     InstrumentService,
+    ChatService,
     UserService
   ],
   bootstrap: [AppComponent]

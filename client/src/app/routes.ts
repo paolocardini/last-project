@@ -7,6 +7,8 @@ import { SignupformComponent } from './signupform/signupform.component';
 import { CreateInstrumentProfileComponent } from './create-profile/create-profile.component';
 import { ProfileListComponent } from './profile-list/profile-list.component';
 import { IsLoggedInService } from './services/isLoggedIn.canactivate.service';
+import { MessageMusiciansComponent } from './message-musicians/message-musicians.component';
+
 
 
 export const routes: Routes = [
@@ -16,6 +18,6 @@ export const routes: Routes = [
   { path: 'signup', component: SignupformComponent, },
   { path: 'create', component: CreateInstrumentProfileComponent, },
   { path: 'show-instrument-profile', component: ProfileListComponent, },
-
+  { path: 'chat-band-pocket/:room/:id', component: MessageMusiciansComponent, },
   { path: '**', redirectTo: '' }
 ];

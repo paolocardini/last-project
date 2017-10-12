@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 import 'rxjs';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
-const BASEURL = environment.BASEURL + "/auth";
+const BASEURL = environment.BASE_URL + "/auth";
 
 @Injectable()
 export class AuthService {

@@ -5,8 +5,26 @@ li {
 
  nav{
    height: 80px;
-   background-color: rgba(101, 47, 79, 0.93);
+   color: rgba(105, 17, 17, 1);
    background: url('https://epicattorneymarketing.com/wp-content/uploads/2015/10/zoom-mic-music-wallpaper-desktop-background-music-picture-music-wallpaper-1.jpg');
    background-size: cover;
 
  }
+
+ footer{
+   background: url('https://epicattorneymarketing.com/wp-content/uploads/2015/10/zoom-mic-music-wallpaper-desktop-background-music-picture-music-wallpaper-1.jpg');
+   color: rgba(105, 17, 17, 1);
+ }
+
+
+
+
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }

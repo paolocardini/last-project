@@ -11,6 +11,7 @@ const debug = require('debug')("angularauth:"+path.basename(__filename).split('.
 const authRoutes = require('./routes/auth');
 const iProfileRoutes = require('./routes/instrumentProfileRoutes');
 const userRoutes = require ('./routes/userRoutes');
+const chatRoutes = require ('./routes/messageRoutes')
 const mongoose = require('mongoose');
 const cors = require('cors');
 require ('dotenv').load();
@@ -57,6 +58,8 @@ app.use(passport.session());
 app.use('/user',userRoutes);
 app.use('/auth', authRoutes);
 app.use('/', iProfileRoutes);
+app.use('/chat', chatRoutes);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
