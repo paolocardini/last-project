@@ -26,13 +26,13 @@
     </ul>
     <ul class="side-nav" id="mobile-demo">
       <ul *ngIf="!user">
-        <a [routerLink]="['/']" class="brand-logo red-text"><img id ="logo"src="" alt="">HOME</a>
+        <li><a [routerLink]="['/']" class="brand-logo red-text">HOME</a></li>
         <li><a [routerLink]="['/login']" class="red-text"><i class="material-icons left red-text">perm_identity</i>Log-In</a></li>
         <li><a [routerLink]="['/signup']" class="red-text"><i class="material-icons left red-text">input</i>Sign-Up</a></li>
       </ul>
       <ul *ngIf="user">
-        <a [routerLink]="['/']" class="brand-logo red-text"><img id ="logo"src="" alt="">HOME</a>
-        <li><a [routerLink]="['/']"><i class="material-icons left red-text">perm_identity</i>{{ user.username }} </a></li>
+        <li><a [routerLink]="['/']" class="brand-logo red-text">HOME</a></li>
+        <li><a [routerLink]="['/user']"><i class="material-icons left red-text">perm_identity</i>{{ user.username }} </a></li>
         <li><a (click)="auth.logout().subscribe()" [routerLink]="['/home']"><i class="material-icons left red-text">exit_to_app</i>Logout</a></li>
       </ul>
     </ul>
@@ -52,11 +52,11 @@
       </div>
       <div class="col l4 offset-l2 s12">
         <h5 class="red-text">Links</h5>
-        <ul>
-          <li><a class="red-text text-lighten-3" href="#!">Link 1</a></li>
-          <li><a class="red-text text-lighten-3" href="#!">Link 2</a></li>
-          <li><a class="red-text text-lighten-3" href="#!">Link 3</a></li>
-          <li><a class="red-text text-lighten-3" href="#!">Link 4</a></li>
+        <ul class="red-text">
+          <li class="red-text"><a class="red-text text-lighten-3" href="#!">Link 1</a></li>
+          <li class="red-text"><a class="red-text text-lighten-3" href="#!">Link 2</a></li>
+          <li class="red-text"><a class="red-text text-lighten-3" href="#!">Link 3</a></li>
+          <li class="red-text"><a class="red-text text-lighten-3" href="#!">Link 4</a></li>
         </ul>
       </div>
     </div>

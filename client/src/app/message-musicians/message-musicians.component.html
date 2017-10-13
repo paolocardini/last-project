@@ -1,6 +1,6 @@
-
+<!--
 <div class="header" *ngIf="recieverUser">
-  <i class="material-icons back position" (click)="goback()">keyboard_arrow_left</i>
+  <i class="material-icons back position" (click)="goback()">exit</i>
   <span class="usuarios position">{{recieverUser.username}}</span>
 </div>
 <div class="header" *ngIf="!recieverUser">
@@ -21,5 +21,18 @@
 
 <div class="write">
 <input type="text" #message>
-<i class="material-icons send" (click) = "sendMessage(message, convo)">chevron_right</i>
+<i class="material-icons send" (click) = "sendMessage(message, convo)">send</i>
+</div> -->
+
+
+<div class="row columns">
+
+
+  <input type="text" id="message" *ngIf="name" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" />
+
+    <div class="chat-container" *ngFor="let item of items | async">
+      <a href="#">{{item.name}}</a>
+
+      <p>{{item.message}}</p>
+    </div>
 </div>
