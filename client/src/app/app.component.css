@@ -18,15 +18,8 @@ li {
    color: rgba(105, 17, 17, 1);
  }
 
-
-
-
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
+.wrapper{
+  height: 500px;
+  width:600px;
+  background: url('https://epicattorneymarketing.com/wp-content/uploads/2015/10/zoom-mic-music-wallpaper-desktop-background-music-picture-music-wallpaper-1.jpg');
+}
