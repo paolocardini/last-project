@@ -3,7 +3,8 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const dbName = 'band-pocket';
 
-mongoose.connect(`mongodb://localhost/${dbName}`);
+// mongoose.connect(`mongodb://localhost/${dbName}`);
+mongoose.connect('mongodb://admin:admin@ds040637.mlab.com:40637/camp-rock');
 
 const salt     = bcrypt.genSaltSync(10);
 const hashPass = bcrypt.hashSync("1234", salt);
