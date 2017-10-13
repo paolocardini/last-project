@@ -43,10 +43,10 @@ p {
 
 .wrapper {
   margin: 0 auto;
-  padding-top: 5px;
+  padding-top: 80px;
   border: 3px solid black;
   border-radius: 8px;
-  width: 600px;
+  width: 800px;
   background-color: #252830;
   text-align: center;
 }
@@ -115,4 +115,11 @@ button {
 }
 .alert-wrapper h4 {
   border-radius: 5px;
+}
+
+.background{
+  background: url('http://moheban-ahlebeit.com/images/Gradient-Wallpaper/Gradient-Wallpaper-14.jpg');
+  width: auto;
+  height: 800px;
+  background-size: cover;
 }

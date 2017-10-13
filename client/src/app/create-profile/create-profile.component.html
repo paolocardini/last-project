@@ -1,16 +1,23 @@
-<form class="addForm">
-  <h2> Add Instrument Profile </h2>
-  <label>EXPERIENCE</label>
-  <input type="text" [(ngModel)]="formInfo.experience" name="experience" />
-  <br>
-  <label>DESCRIPTION</label>
-  <input type="text" [(ngModel)]="formInfo.description" name="description" />
-  <br>
-  <label>STYLE</label>
-  <input type="text" [(ngModel)]="formInfo.style" name="style" />
-  <br>
-  <label>INSTRUMENT</label>
-  <input type="text" [(ngModel)]="formInfo.instrument" name="instrument" />
+<div class="background">
+
+    <form class="addForm">
+    
+      <label>EXPERIENCE</label>
+      <input type="text" [(ngModel)]="formInfo.experience" name="experience" />
+      <br>
+      <label>DESCRIPTION</label>
+      <input type="text" [(ngModel)]="formInfo.description" name="description" />
+      <br>
+      <label>STYLE</label>
+      <input type="text" [(ngModel)]="formInfo.style" name="style" />
+      <br>
+      <label>INSTRUMENT</label>
+      <input type="text" [(ngModel)]="formInfo.instrument" name="instrument" />
+      <button (click)="createInstrumentProfile()" class="btn waves-effect waves-light" type="submit" name="action">CREATE-INSTRUMENT-PROFILE
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
+</div>
   <!-- <form action="#">
     <div class="file-field input-field">
       <div class="btn">
@@ -35,7 +42,3 @@
       </div>
     </div>
   </form> -->
-  <button (click)="createInstrumentProfile()" class="btn waves-effect waves-light" type="submit" name="action">CREATE-INSTRUMENT-PROFILE
-    <i class="material-icons right">send</i>
-  </button>
-</form>

@@ -10,23 +10,17 @@ import { InstrumentService } from '../services/instrument.service'
   styleUrls: ['./create-profile.component.css']
 })
 
-
-
-
 export class CreateInstrumentProfileComponent implements OnInit {
-
   formInfo = {
     experience: "",
     description: "",
     style: "",
     instrument: ""
-
   }
 
   constructor(private http: Http, public router: Router, private inst: InstrumentService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   createInstrumentProfile() {
     const { experience, description, style, instrument } = this.formInfo;
