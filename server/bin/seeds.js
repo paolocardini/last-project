@@ -18,10 +18,10 @@ const users = [
     email:"david@gmail.com",
     username:"dav",
     password: hashPass,
-    image: "",
-    lat:"",
-    lng:"",
-    profile:["59dbd63dbe36940c33e88111"]
+    image: "http://cdn.ismorbo.com/wp-content/uploads/2017/07/gerald-fearnley-02.jpg",
+    lat:"40.730610",
+    lng:"-73.935242",
+    profile:[]
   },
   {
     firstname: "Jimmy",
@@ -32,10 +32,10 @@ const users = [
     email:"jimmy@hotmail.com",
     username:"jim",
     password: hashPass,
-    image: "",
-    lat:"",
-    lng:"",
-    profile:["59dbd63dbe36940c33e88111"]
+    image: "http://ultimateclassicrock.com/files/2014/12/86119281.jpg?w=630",
+    lat:"40.650002",
+    lng:"-73.949997",
+    profile:[]
 
   },
   {
@@ -47,10 +47,10 @@ const users = [
     email:"john@mail.com",
     username:"johnny",
     password: hashPass,
-    image: "",
-    lat:"",
-    lng:"",
-    profile:["59dbd63dbe36940c33e88111"]
+    image: "https://www.jambase.com/wp-content/uploads/2016/05/John-Bonham-Press-Crop-1480x832.jpg",
+    lat:"47.608013",
+    lng:"-122.335167",
+    profile:[]
   }
 ];
 

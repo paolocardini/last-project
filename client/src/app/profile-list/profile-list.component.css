@@ -2,6 +2,14 @@
   margin: 30px;
 }
 
+.background {
+  background: url('http://moheban-ahlebeit.com/images/Gradient-Wallpaper/Gradient-Wallpaper-14.jpg');
+  width: auto;
+  height: 100wh;
+  background-size: cover;
+  
+}
+
 
 .profile-music {
   margin: 20px;

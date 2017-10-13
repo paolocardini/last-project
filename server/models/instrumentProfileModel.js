@@ -12,8 +12,8 @@ const instrumentProfileSchema = new Schema({
   'instrument': {
     type: String,
     enum: ['guitar', 'drum', 'bass']
-  }
-
+  },
+	'videoId': String
 });
 
 module.exports = mongoose.model('instrumentProfile', instrumentProfileSchema);

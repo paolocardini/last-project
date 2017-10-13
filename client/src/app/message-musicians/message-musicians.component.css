@@ -1,125 +1,106 @@
-body {
-  background-color: #434857 !important;
-  font-family: 'Raleway', sans-serif !important;
-}
-button:hover {
-  background-color: #1CA8DD !important;
-  color: #434857 !important;
-}
-input,
-textarea {
-  border-color: #1CA8DD !important;
-  background-color: #434857 !important;
-  color: #ddd !important;
-}
-span {
-  background-color: #1BC98E !important;
-  border-color: #1BC98E !important;
-  color: #252830 !important;
-}
-h4,
-h1 {
-  font-family: 'Raleway', sans-serif !important;
-  color: #1BC98E !important;
-}
-p {
-  color: #ddd !important;
-}
 
 
-.fBase-ico {
+
+
+.header{
+  height: 80px;
+  background: black;
+  font-family: 'Source Sans Pro', sans-serif;
+  color:white;
+  position:fixed;
+  top:0;
+  width:100%;
+  font-size:24px;
+  letter-spacing: 2px;
+  z-index:1;
+
+}
+
+.back{
+
+}
+.position{
+  position: relative;
+  left: 24px;
+  top:25px;
+}
+.usuarios{
+  color:white;
+  font-family: 'Titillium Web', sans-serif;
+  font-size:16px;
+  font-weight: lighter;
+  vertical-align: 100%;
+  top:35px;
+  left:25px;
+}
+.write{
+  position: fixed;
+  bottom:4px;
+  display: block;
+  left: 6px;
+}
+.write input {
+  width: 2000px;
+  height: 32px;
   margin: 0 auto;
+  border: none;
+  background-color: grey;
+  color:white;
+  padding-left: 16px;
 }
-.fBase-ico i {
-  margin-right: 5px;
+.send{
+
+  bottom: 4px;
+  right:10px;
+  color:#616161;
 }
-.fBase-ico p {
-  margin-bottom: 5px;
-  font-weight: 200;
-  color: #1CA8DD !important;
+.conversation{
+  position: absolute;
+  top:90px;
+  width: 100%;
+  overflow: scroll;
+  height:100%;
 }
 
-
-
-.wrapper {
-  margin: 0 auto;
-  padding-top: 80px;
-  border: 3px solid black;
-  border-radius: 8px;
-  width: 800px;
-  background-color: #252830;
-  text-align: center;
-}
-input,
-span {
-  margin-top: 16px !important;
-}
-li {
-  text-align: left;
-  list-style-type: none;
-  font-size: 13px;
-}
-button {
-  background-color: #252830 !important;
-  color: #1CA8DD !important;
-  border: 1px solid !important;
-  border-color: #1CA8DD !important;
-  margin-bottom: 10px;
-  border-radius: 4px !important;
-}
-
-
-.title-wrapper {
-  margin: 0 auto;
-  margin-top: 200px;
-  width: 600px;
-  text-align: center;
-}
-.title-wrapper h1 {
-  font-size: 100px !important;
-  font-weight: 200;
-  border: 3px solid #1BC98E;
-  border-radius: 3px;
-  margin-bottom: 30px;
-  background-color: #252830;
-}
-#enter-btn {
-  border: 0px !important;
-}
-
-
-.messages {
-  margin: 10px;
-  padding-left: 5px;
-  border: 1px solid #1CA8DD;
-  border-radius: 4px;
-  height: 300px;
-  background-color: #434857;
-  color: #1BC98E !important;
-  overflow: auto;
-  white-space: normal;
-  word-wrap: break-word;
-}
-
-.send-btn {
-  padding-left: 30px !important;
-  padding-right: 30px !important;
-}
-
-.alert-wrapper {
-  margin: 0 auto;
-  margin-top: 10px;
-  border-left: 2px solid #1BC98E !important;
-  width: 206px;
-  text-align: center;
-}
-.alert-wrapper h4 {
-  border-radius: 5px;
-}
-
-.background{
-  background: url('http://moheban-ahlebeit.com/images/Gradient-Wallpaper/Gradient-Wallpaper-14.jpg');
-  width: auto;
+.spessore{
   height: 800px;
-  background-size: cover;
+}
+
+.mine{
+
+
+  margin-left:50px;
+}
+.other{
+  text-align: left;
+
+  margin-left:10px;
+}
+.message{
+  width: auto;
+  background-color: grey;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size:14px;
+}
+
+h{
+display: inline-block;
+float: right;
+}
+.message p{
+  background-color: grey;
+  padding:20px;
+
+}
+.red{
+  background: #fd9a22;
+  color:white;
+}
+.gray{
+  color:black;
+  background: #c2c2c2;
+}
+.senderName{
+  font-size:14px;
+  font-weight: bold;
 }

@@ -9,8 +9,6 @@ import { ProfileListComponent } from './profile-list/profile-list.component';
 import { IsLoggedInService } from './services/isLoggedIn.canactivate.service';
 import { MessageMusiciansComponent } from './message-musicians/message-musicians.component';
 
-
-
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'user', component: UserprofileComponent, canActivate: [IsLoggedInService] },
