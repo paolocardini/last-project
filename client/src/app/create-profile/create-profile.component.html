@@ -1,41 +1,22 @@
-<form class="addForm">
-  <h2> Add Instrument Profile </h2>
-  <label>EXPERIENCE</label>
-  <input type="text" [(ngModel)]="formInfo.experience" name="experience" />
-  <br>
-  <label>DESCRIPTION</label>
-  <input type="text" [(ngModel)]="formInfo.description" name="description" />
-  <br>
-  <label>STYLE</label>
-  <input type="text" [(ngModel)]="formInfo.style" name="style" />
-  <br>
-  <label>INSTRUMENT</label>
-  <input type="text" [(ngModel)]="formInfo.instrument" name="instrument" />
-  <!-- <form action="#">
-    <div class="file-field input-field">
-      <div class="btn">
-        <span>PHOTO</span>
-        <input type="file" multiple>
-        <i class="material-icons right">add_a_photo</i>
-      </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-      </div>
-    </div>
+<div class="background">
+  <form class="addForm">
+    <label>EXPERIENCE</label>
+    <input type="text" [(ngModel)]="formInfo.experience" name="experience" />
+    <br>
+    <label>DESCRIPTION</label>
+    <input type="text" [(ngModel)]="formInfo.description" name="description" />
+    <br>
+    <label>STYLE</label>
+    <input type="text" [(ngModel)]="formInfo.style" name="style" />
+    <br>
+    <label>INSTRUMENT</label>
+    <input type="text" [(ngModel)]="formInfo.instrument" name="instrument" />
+    <br>
+    <label>VIDEO</label>
+    <input type="text" [(ngModel)]="formInfo.videoId" name="videoId" />
+    <button (click)="createInstrumentProfile()" class="btn waves-effect waves-light" type="submit" name="action">
+      CREATE-INSTRUMENT-PROFILE
+      <i class="material-icons right">send</i>
+    </button>
   </form>
-  <form action="#">
-    <div class="file-field input-field">
-      <div class="btn">
-        <span>AUDIO</span>
-        <input type="file" multiple>
-        <i class="material-icons right">audiotrack</i>
-      </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-      </div>
-    </div>
-  </form> -->
-  <button (click)="createInstrumentProfile()" class="btn waves-effect waves-light" type="submit" name="action">CREATE-INSTRUMENT-PROFILE
-    <i class="material-icons right">send</i>
-  </button>
-</form>
+</div>

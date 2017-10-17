@@ -1,4 +1,13 @@
 .addForm {
-
+  color:white;
   width: 700px;
+}
+
+
+
+.background{
+  background: url('http://moheban-ahlebeit.com/images/Gradient-Wallpaper/Gradient-Wallpaper-14.jpg');
+  width: auto;
+  height: 800px;
+  background-size: cover;
 }

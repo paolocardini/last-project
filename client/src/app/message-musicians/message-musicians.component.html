@@ -1,34 +1,36 @@
-<div class="background">
 
-  <div class="wrapper">
-    <div class="fBase-ico">
-      <p><i class="fi-database small"></i>Powered by Jimena</p>
+
+
+
+
+
+<div class="header" *ngIf="recieverUser">
+
+  <i class="material-icons back position" (click)="goback()">exit</i>
+
+  <span class="usuarios position">{{recieverUser.username}}</span><h5>POWERED BY JIMEMART</h5>
+
+
+</div>
+<div class="header" *ngIf="!recieverUser">
+  <i class="material-icons back position send" (click)="goback()">send</i>
+  <span class="usuarios position">{{roomName}}</span>
+</div>
+<div class="spessore"></div>
+
+
+<div  class="conversation"  id="convo">
+  <div *ngFor="let mess of convMessages">
+    <div *ngIf="mess.sender === user._id" class="mine message">
+      <p class="grey">{{mess.message}}</p>
     </div>
-
-    <div class="messages"></div>
-
-    <form>
-      <div class="row">
-        <div class="large-12 columns">
-          <div class="row collapse prefix-radius">
-            <div class="small-4 columns">
-              <span class="prefix">Username</span>
-            </div>
-
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-12 columns">
-          <label>
-            <textarea id="user-ms-input" placeholder="Enter a Message"></textarea>
-          </label>
-        </div>
-      </div>
-    </form>
-
-    <button class="tiny send-btn">Send</button>
-    <button class="tiny clear-chat">Exit</button>
+    <div *ngIf="mess.sender !== user._id" class="other message">
+      <p class="green"><span *ngIf="mess.nameOfSender" class="senderName">{{mess.nameOfSender}}: </span><br *ngIf="mess.nameOfSender" />{{mess.message}}</p>
+    </div>
   </div>
+</div>
 
+<div class="write">
+  <input type="text" #message>
+  <i class="material-icons send" (click) = "sendMessage(message, convo)">send</i>
 </div>

@@ -1,4 +1,6 @@
-<div class="row">
+
+
+<div class="row background">
   <div class="col s12 m6">
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
@@ -10,20 +12,22 @@
             <p>STYLE OF MUSIC : {{instrument.style}}</p>
             <p>MY EXPERIENCE : {{instrument.experience}}</p>
             <p>I'M SEARCHING FOR : {{instrument.description}}</p>
-
+            <iframe width="560"
+                    height="315"
+                    frameborder="0"
+                    allowfullscreen
+                    [src]="instrument.videoId | safeHtml">
+            </iframe>
           </div>
 
           <div class="card-action">
-
             <button (click) = "navigateToRoom(profile.username,profile._id)" class="btn waves-effect waves-light" type="submit" name="action">GO TO
                 <i class="material-icons right">chat</i>
               </button>
           </div>
         </div>
 
-
       </div>
-
     </div>
   </div>
 </div>

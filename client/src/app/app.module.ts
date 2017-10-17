@@ -25,6 +25,7 @@ import { ChatService } from './services/chat.service';
 
 import { routes } from './routes';
 import { MessageMusiciansComponent } from './message-musicians/message-musicians.component';
+import { SafeHtmlPipe } from './safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MessageMusiciansComponent } from './message-musicians/message-musicians
     SignupformComponent,
     CreateInstrumentProfileComponent,
     ProfileListComponent,
-    MessageMusiciansComponent
+    MessageMusiciansComponent,
+    SafeHtmlPipe
 
   ],
   imports: [
